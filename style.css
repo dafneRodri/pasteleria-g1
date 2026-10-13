@@ -1,0 +1,40 @@
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #FFF6F6;
+}
+::-webkit-scrollbar-thumb {
+    background: #F67280;
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #e05263;
+}
+
+/* Modal Transitions */
+#successModal.active {
+    display: flex !important;
+}
+#successModal.active #modalCard {
+    transform: scale(1) !important;
+    opacity: 1 !important;
+}
+
+/* Input Error Highlighting */
+.input-error {
+    border-color: #ef4444 !important;
+    background-color: #fef2f2 !important;
+}
+
+/* Custom Leaflet Map Popup Styling */
+.leaflet-popup-content-wrapper {
+    border-radius: 1rem !important;
+    padding: 4px !important;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1) !important;
+}
+
+.leaflet-popup-tip {
+    background: white !important;
+}

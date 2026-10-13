@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dulce Arte Pâtisserie | Pastelería Artesanal</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Leaflet CSS (para el Mapa) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            pink: '#F8B195',
+                            rose: '#F67280',
+                            brown: '#355C7D',
+                            darkbrown: '#2A363B',
+                            cream: '#FFF6F6',
+                            gold: '#E5C158',
+                            goldhover: '#CBA234'
+                        }
+                    },
+                    fontFamily: {
+                        playfair: ['"Playfair Display"', 'serif'],
+                        poppins: ['"Poppins"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Estilos Personalizados -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="font-poppins bg-brand-cream text-brand-darkbrown antialiased selection:bg-brand-rose selection:text-white overflow-x-hidden">
+
+    <!-- NAVBAR -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 px-6 md:px-12 backdrop-blur-md bg-white/75 border-b border-rose-100 shadow-sm" id="navbar">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="#home" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-rose-400 to-amber-300 flex items-center justify-center text-white shadow-md transform group-hover:rotate-12 transition-transform duration-300">
+                    <i class="fa-solid fa-cake-candles text-lg"></i>
+                </div>
+                <span class="font-playfair text-2xl font-extrabold tracking-tight bg-gradient-to-r from-rose-500 via-purple-600 to-amber-600 bg-clip-text text-transparent">Dulce Arte</span>
+            </a>
+
+            <!-- Menú Desktop -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-gray-700">
+                <a href="#home" class="hover:text-rose-500 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-rose-500 hover:after:w-full after:transition-all">Inicio</a>
+                <a href="#about" class="hover:text-rose-500 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-rose-500 hover:after:w-full after:transition-all">Nosotros</a>
+                <a href="#products" class="hover:text-rose-500 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-rose-500 hover:after:w-full after:transition-all">Productos & Servicios</a>
+                <a href="#contact" class="hover:text-rose-500 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-rose-500 hover:after:w-full after:transition-all">Haz tu Pedido</a>
+                <a href="#location" class="hover:text-rose-500 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-rose-500 hover:after:w-full after:transition-all">Ubicación</a>
+            </nav>
+
+            <a href="#contact" class="hidden md:inline-flex items-center gap-2 bg-gradient-to-r from-rose-500 to-amber-500 text-white font-semibold px-5 py-2.5 rounded-full shadow-lg hover:shadow-rose-300/50 hover:scale-105 active:scale-95 transition-all">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> Cotizar Pastel
+            </a>
+
+            <!-- Botón Menú Móvil -->
+            <button id="mobile-menu-btn" class="md:hidden text-2xl text-gray-700 focus:outline-none" aria-label="Abrir menú">
+                <i class="fa-solid fa-bars" id="menu-icon"></i>
+            </button>
+        </div>
+
+        <!-- Menú Móvil Desplegable -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-lg border-b border-rose-100 shadow-xl py-6 px-8 flex flex-col gap-4 text-center">
+            <a href="#home" class="mobile-link text-lg font-medium text-gray-800 hover:text-rose-500">Inicio</a>
+            <a href="#about" class="mobile-link text-lg font-medium text-gray-800 hover:text-rose-500">Nosotros</a>
+            <a href="#products" class="mobile-link text-lg font-medium text-gray-800 hover:text-rose-500">Productos & Servicios</a>
+            <a href="#contact" class="mobile-link text-lg font-medium text-gray-800 hover:text-rose-500">Haz tu Pedido</a>
+            <a href="#location" class="mobile-link text-lg font-medium text-gray-800 hover:text-rose-500">Ubicación</a>
+            <a href="#contact" class="mobile-link inline-block bg-gradient-to-r from-rose-500 to-amber-500 text-white font-semibold py-3 rounded-full shadow-md mt-2">Cotizar Pastel</a>
+        </div>
+    </header>
+
+    <!-- SECCIÓN 1: PORTADA / HERO -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-28 pb-16 px-6 overflow-hidden bg-gradient-to-b from-rose-50/60 via-amber-50/30 to-brand-cream">
+        <!-- Esferas de Fondo -->
+        <div class="absolute top-20 left-10 w-72 h-72 bg-rose-200/40 rounded-full filter blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-amber-200/40 rounded-full filter blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+            <div class="space-y-6 text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-rose-100/80 border border-rose-200 text-rose-600 text-sm font-semibold tracking-wide animate-bounce">
+                    <i class="fa-solid fa-award"></i> Repostería Fina & Gourmet
+                </div>
+                <h1 class="font-playfair text-4xl sm:text-6xl lg:text-7xl font-extrabold text-gray-900 leading-tight">
+                    Creamos <span class="bg-gradient-to-r from-rose-500 via-pink-500 to-amber-500 bg-clip-text text-transparent">Momentos Inolvidables</span>
+                </h1>
+                <p class="text-lg sm:text-xl text-gray-600 font-light max-w-xl mx-auto lg:mx-0">
+                    "Transformamos ingredientes de alta calidad en obras de arte comestibles para endulzar cada celebración de tu vida."
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                    <a href="#contact" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-rose-500 to-amber-500 text-white font-bold rounded-full shadow-lg shadow-rose-200 hover:shadow-xl hover:scale-105 active:scale-95 transition-all text-center flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Diseña tu Pastel
+                    </a>
+                    <a href="#products" class="w-full sm:w-auto px-8 py-4 bg-white hover:bg-gray-50 text-gray-800 font-semibold rounded-full border border-gray-200 shadow-sm hover:shadow transition-all text-center flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-utensils text-rose-400"></i> Ver Catálogo
+                    </a>
+                </div>
+
+                <div class="pt-8 grid grid-cols-3 gap-4 border-t border-rose-100 max-w-md mx-auto lg:mx-0">
+                    <div>
+                        <p class="font-playfair text-2xl sm:text-3xl font-bold text-rose-500">+100%</p>
+                        <p class="text-xs sm:text-sm text-gray-500">Artesanal</p>
+                    </div>
+                    <div>
+                        <p class="font-playfair text-2xl sm:text-3xl font-bold text-amber-500">+5,000</p>
+                        <p class="text-xs sm:text-sm text-gray-500">Sonrisas</p>
+                    </div>
+                    <div>
+                        <p class="font-playfair text-2xl sm:text-3xl font-bold text-rose-500">4.9 ★</p>
+                        <p class="text-xs sm:text-sm text-gray-500">Calificación</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative">
+                <div class="relative mx-auto w-full max-w-md lg:max-w-none">
+                    <div class="relative z-10 rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform hover:rotate-1 transition-transform duration-500">
+                        <img src="https://images.unsplash.com/photo-1535141192574-5d4897c13136?auto=format&fit=crop&w=1000&q=80" alt="Pastel gourmet" class="w-full h-[450px] object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-6">
+                            <div class="text-white">
+                                <p class="text-xs uppercase tracking-widest text-amber-300 font-semibold">Edición Especial</p>
+                                <p class="font-playfair text-xl font-bold">Pastel Velvet de Frutos Rojos</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tarjeta flotante de reseña -->
+                    <div class="absolute -bottom-6 -left-6 z-20 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-rose-100 hidden sm:flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-full bg-rose-100 flex items-center justify-center text-rose-500 font-bold">
+                            <i class="fa-solid fa-heart text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs font-semibold text-gray-800">"¡El pastel de bodas fue mágico!"</p>
+                            <p class="text-[10px] text-gray-500">Sofía & Carlos — Clientes Felices</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 2: CONTENIDO (ACERCA DE Y PRODUCTOS/SERVICIOS) -->
+    <section id="about" class="py-20 px-6 bg-white relative">
+        <div class="max-w-7xl mx-auto space-y-16">
+            
+            <!-- ACERCA DE MI PASTELERÍA -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80" alt="Chef preparando pastel" class="rounded-2xl shadow-md h-64 w-full object-cover transform translate-y-4">
+                    <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&w=600&q=80" alt="Postres gourmet" class="rounded-2xl shadow-md h-64 w-full object-cover">
+                </div>
+                <div class="space-y-6">
+                    <span class="text-rose-500 font-semibold text-sm tracking-widest uppercase">Nuestra Historia & Pasión</span>
+                    <h2 class="font-playfair text-3xl sm:text-5xl font-bold text-gray-900">Pasión horneada con amor artesanal</h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        En <strong class="text-rose-500">Dulce Arte</strong> creemos que cada pastel cuenta una historia única. Nacimos con el sueño de combinar recetas tradicionales francesas con ingredientes locales de primera calidad.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed">
+                        No usamos conservantes artificiales ni premezclas industriales. Cada relleno, merengue y decoración es elaborado desde cero por nuestro equipo de chefs reposteros apasionados.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-4 pt-2">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-check-circle text-rose-500 text-xl"></i>
+                            <span class="font-medium text-gray-800 text-sm">Ingredientes 100% Orgánicos</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-check-circle text-rose-500 text-xl"></i>
+                            <span class="font-medium text-gray-800 text-sm">Diseños Personalizados</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-check-circle text-rose-500 text-xl"></i>
+                            <span class="font-medium text-gray-800 text-sm">Opciones Veganas & Gluten Free</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-check-circle text-rose-500 text-xl"></i>
+                            <span class="font-medium text-gray-800 text-sm">Entregas Puntuales</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCTOS Y SERVICIOS -->
+            <div id="products" class="pt-16 border-t border-gray-100">
+                <div class="text-center max-w-3xl mx-auto space-y-4 mb-12">
+                    <span class="text-rose-500 font-semibold text-sm tracking-widest uppercase">Menú & Servicios</span>
+                    <h2 class="font-playfair text-3xl sm:text-5xl font-bold text-gray-900">Nuestras Delicias & Servicios Especiales</h2>
+                    <p class="text-gray-600">Explora nuestro catálogo gourmet diseñado para satisfacer hasta los paladares más exigentes.</p>
+                </div>
+
+                <!-- Filtros de categoría -->
+                <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-4 mb-10">
+                    <button class="filter-btn active px-5 py-2 rounded-full font-medium text-sm transition-all bg-rose-500 text-white shadow-md shadow-rose-200" data-filter="all">Todos</button>
+                    <button class="filter-btn px-5 py-2 rounded-full font-medium text-sm transition-all bg-gray-100 text-gray-600 hover:bg-rose-100 hover:text-rose-600" data-filter="bodas">Bodas & Eventos</button>
+                    <button class="filter-btn px-5 py-2 rounded-full font-medium text-sm transition-all bg-gray-100 text-gray-600 hover:bg-rose-100 hover:text-rose-600" data-filter="cupcakes">Cupcakes & Minis</button>
+                    <button class="filter-btn px-5 py-2 rounded-full font-medium text-sm transition-all bg-gray-100 text-gray-600 hover:bg-rose-100 hover:text-rose-600" data-filter="fit">Veganos / Gluten-Free</button>
+                    <button class="filter-btn px-5 py-2 rounded-full font-medium text-sm transition-all bg-gray-100 text-gray-600 hover:bg-rose-100 hover:text-rose-600" data-filter="mesas">Mesas Dulces</button>
+                </div>
+
+                <!-- Grid de Productos -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="products-grid">
+                    
+                    <!-- Producto 1 -->
+                    <div class="product-card bg-white rounded-2xl overflow-hidden border border-rose-100 shadow-sm hover:shadow-xl transition-all duration-300 group" data-category="bodas">
+                        <div class="relative overflow-hidden h-64">
+                            <img src="https://images.unsplash.com/photo-1535141192574-5d4897c13136?auto=format&fit=crop&w=600&q=80" alt="Pastel Nupcial Rose Gold" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <span class="absolute top-4 right-4 bg-amber-400 text-white text-xs font-bold px-3 py-1 rounded-full shadow">Bestseller</span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-playfair text-xl font-bold text-gray-900">Pastel Nupcial Elegance</h3>
+                                <span class="text-rose-500 font-bold text-lg">$1,200</span>
+                            </div>
+                            <p class="text-xs text-gray-500">3 pisos de vainilla de Madagascar con ganache de chocolate blanco y flores comestibles.</p>
+                            <button onclick="quickOrder('Pastel Nupcial Elegance')" class="w-full py-2.5 bg-rose-50 hover:bg-rose-500 text-rose-600 hover:text-white font-semibold rounded-xl border border-rose-200 transition-colors flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-cart-plus"></i> Seleccionar para Cotizar
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Producto 2 -->
+                    <div class="product-card bg-white rounded-2xl overflow-hidden border border-rose-100 shadow-sm hover:shadow-xl transition-all duration-300 group" data-category="cupcakes">
+                        <div class="relative overflow-hidden h-64">
+                            <img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?auto=format&fit=crop&w=600&q=80" alt="Box Cupcakes Gourmet" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-playfair text-xl font-bold text-gray-900">Box Cupcakes Gourmet (x6)</h3>
+                                <span class="text-rose-500 font-bold text-lg">$280</span>
+                            </div>
+                            <p class="text-xs text-gray-500">Surtido con Red Velvet, Nutella, Frambuesa, Maracuyá, Caramelo Salado y Oreo.</p>
+                            <button onclick="quickOrder('Box Cupcakes Gourmet (x6)')" class="w-full py-2.5 bg-rose-50 hover:bg-rose-500 text-rose-600 hover:text-white font-semibold rounded-xl border border-rose-200 transition-colors flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-cart-plus"></i> Seleccionar para Cotizar
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Producto 3 -->
+                    <div class="product-card bg-white rounded-2xl overflow-hidden border border-rose-100 shadow-sm hover:shadow-xl transition-all duration-300 group" data-category="fit">
+                        <div class="relative overflow-hidden h-64">
+                            <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=80" alt="Tarta Vegana de Chocolate" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <span class="absolute top-4 right-4 bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow">Sin Azúcar</span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-playfair text-xl font-bold text-gray-900">Tarta Vegana Cacao & Avellana</h3>
+                                <span class="text-rose-500 font-bold text-lg">$450</span>
+                            </div>
+                            <p class="text-xs text-gray-500">100% basada en plantas, endulzada con dátiles, harina de almendra sin gluten.</p>
+                            <button onclick="quickOrder('Tarta Vegana Cacao')" class="w-full py-2.5 bg-rose-50 hover:bg-rose-500 text-rose-600 hover:text-white font-semibold rounded-xl border border-rose-200 transition-colors flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-cart-plus"></i> Seleccionar para Cotizar
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Producto 4 -->
+                    <div class="product-card bg-white rounded-2xl overflow-hidden border border-rose-100 shadow-sm hover:shadow-xl transition-all duration-300 group" data-category="mesas">
+                        <div class="relative overflow-hidden h-64">
+                            <img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=600&q=80" alt="Macarons Franceses" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-playfair text-xl font-bold text-gray-900">Torre de Macarons Paris</h3>
+                                <span class="text-rose-500 font-bold text-lg">$650</span>
+                            </div>
+                            <p class="text-xs text-gray-500">30 macarons surtidos montados en torre decorativa ideal para mesas de postres.</p>
+                            <button onclick="quickOrder('Torre de Macarons Paris')" class="w-full py-2.5 bg-rose-50 hover:bg-rose-500 text-rose-600 hover:text-white font-semibold rounded-xl border border-rose-200 transition-colors flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-cart-plus"></i> Seleccionar para Cotizar
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Producto 5 -->
+                    <div class="product-card bg-white rounded-2xl overflow-hidden border border-rose-100 shadow-sm hover:shadow-xl transition-all duration-300 group" data-category="bodas">
+                        <div class="relative overflow-hidden h-64">
+                            <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=600&q=80" alt="Pastel de Cumpleaños Mágico" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-playfair text-xl font-bold text-gray-900">Pastel Drip de Frutos Silvestres</h3>
+                                <span class="text-rose-500 font-bold text-lg">$520</span>
+                            </div>
+                            <p class="text-xs text-gray-500">Bizcocho esponjoso con crema diplomática y goteo de chocolate amargo 70%.</p>
+                            <button onclick="quickOrder('Pastel Drip Frutos Silvestres')" class="w-full py-2.5 bg-rose-50 hover:bg-rose-500 text-rose-600 hover:text-white font-semibold rounded-xl border border-rose-200 transition-colors flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-cart-plus"></i> Seleccionar para Cotizar
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Producto 6 / Servicio -->
+                    <div class="product-card bg-white rounded-2xl overflow-hidden border border-rose-100 shadow-sm hover:shadow-xl transition-all duration-300 group" data-category="mesas">
+                        <div class="relative overflow-hidden h-64 bg-gradient-to-tr from-rose-400 to-amber-300 flex items-center justify-center text-white p-8 text-center">
+                            <div class="space-y-2">
+                                <i class="fa-solid fa-champagne-glasses text-5xl"></i>
+                                <h4 class="font-playfair text-2xl font-bold">Catering Completo de Mesas Dulces</h4>
+                            </div>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-playfair text-xl font-bold text-gray-900">Servicio de Mesa Temática</h3>
+                                <span class="text-rose-500 font-bold text-lg">Personalizado</span>
+                            </div>
+                            <p class="text-xs text-gray-500">Montaje, cristalería, decoración floral y variedad de minipostres para más de 50 invitados.</p>
+                            <button onclick="quickOrder('Servicio Mesa Dulce')" class="w-full py-2.5 bg-rose-50 hover:bg-rose-500 text-rose-600 hover:text-white font-semibold rounded-xl border border-rose-200 transition-colors flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-cart-plus"></i> Seleccionar para Cotizar
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECCIÓN 3: CONTACTO / FORMULARIO INNOVADOR -->
+    <section id="contact" class="py-20 px-6 bg-gradient-to-b from-brand-cream via-amber-50/40 to-rose-50/60 relative">
+        <div class="max-w-4xl mx-auto bg-white rounded-3xl shadow-2xl border border-rose-100 overflow-hidden">
+            <div class="bg-gradient-to-r from-rose-500 to-amber-500 p-8 sm:p-12 text-white text-center relative overflow-hidden">
+                <div class="relative z-10 space-y-2">
+                    <span class="text-xs uppercase tracking-widest text-amber-200 font-bold">Cotizador Interactivo</span>
+                    <h2 class="font-playfair text-3xl sm:text-4xl font-extrabold">Diseña & Encarga tu Pastel Ideal</h2>
+                    <p class="text-rose-100 text-sm max-w-md mx-auto">Completa el formulario para recibir una cotización instantánea y confirmación de disponibilidad.</p>
+                </div>
+            </div>
+
+            <form id="orderForm" class="p-6 sm:p-10 space-y-8" novalidate>
+                
+                <!-- PASO 1: DATOS DEL CLIENTE -->
+                <div class="space-y-4">
+                    <h3 class="font-playfair text-xl font-bold text-gray-800 flex items-center gap-2 border-b border-gray-100 pb-2">
+                        <span class="w-7 h-7 rounded-full bg-rose-100 text-rose-600 text-xs flex items-center justify-center font-bold">1</span>
+                        Información de Contacto
+                    </h3>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1">Nombre Completo *</label>
+                            <input type="text" id="clientName" placeholder="Ej. Ana García" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-rose-400 focus:border-transparent outline-none transition-all text-sm">
+                            <span class="error-msg text-xs text-rose-500 hidden mt-1">Ingresa tu nombre completo.</span>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1">Teléfono / WhatsApp *</label>
+                            <input type="tel" id="clientPhone" placeholder="Ej. 55 1234 5678" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-rose-400 focus:border-transparent outline-none transition-all text-sm">
+                            <span class="error-msg text-xs text-rose-500 hidden mt-1">Ingresa un teléfono válido (10 dígitos).</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">Correo Electrónico *</label>
+                        <input type="email" id="clientEmail" placeholder="tu@email.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-rose-400 focus:border-transparent outline-none transition-all text-sm">
+                        <span class="error-msg text-xs text-rose-500 hidden mt-1">Ingresa un correo electrónico válido.</span>
+                    </div>
+                </div>
+
+                <!-- PASO 2: ESPECIFICACIONES DEL PASTEL -->
+                <div class="space-y-4">
+                    <h3 class="font-playfair text-xl font-bold text-gray-800 flex items-center gap-2 border-b border-gray-100 pb-2">
+                        <span class="w-7 h-7 rounded-full bg-rose-100 text-rose-600 text-xs flex items-center justify-center font-bold">2</span>
+                        Detalles del Pastel o Producto
+                    </h3>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1">Tipo de Pastel / Especialidad *</label>
+                            <select id="cakeType" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-rose-400 focus:border-transparent outline-none transition-all text-sm bg-white">
+                                <option value="">-- Selecciona una Opción --</option>
+                                <option value="Pastel de Boda (Elegance)">Pastel de Boda (Elegance)</option>
+                                <option value="Red Velvet con Frutos Rojos">Red Velvet con Frutos Rojos</option>
+                                <option value="Tarta Vegana de Cacao">Tarta Vegana de Cacao & Avellana</option>
+                                <option value="Box de Cupcakes Gourmet">Box de Cupcakes Gourmet (x6)</option>
+                                <option value="Torre de Macarons">Torre de Macarons</option>
+                                <option value="Pastel Personalizado Especial">Pastel 100% Personalizado</option>
+                            </select>
+                            <span class="error-msg text-xs text-rose-500 hidden mt-1">Selecciona un tipo de pastel.</span>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1">Tamaño / Porciones Estimadas *</label>
+                            <select id="cakeSize" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-rose-400 focus:border-transparent outline-none transition-all text-sm bg-white">
+                                <option value="10">Pequeño (10-12 personas)</option>
+                                <option value="20" selected>Mediano (20-25 personas)</option>
+                                <option value="40">Grande (35-40 personas)</option>
+                                <option value="80">Evento / Boda (+70 personas)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">Notas Especiales / Mensaje en el Pastel / Alergias</label>
+                        <textarea id="cakeNotes" rows="3" placeholder="Ej. Escribir '¡Feliz Cumpleaños María!', evitar nueces..." class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-rose-400 focus:border-transparent outline-none transition-all text-sm"></textarea>
+                    </div>
+                </div>
+
+                <!-- PASO 3: ENTREGA Y FECHA -->
+                <div class="space-y-4">
+                    <h3 class="font-playfair text-xl font-bold text-gray-800 flex items-center gap-2 border-b border-gray-100 pb-2">
+                        <span class="w-7 h-7 rounded-full bg-rose-100 text-rose-600 text-xs flex items-center justify-center font-bold">3</span>
+                        Método de Entrega & Fecha
+                    </h3>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1">Fecha del Evento / Entrega *</label>
+                            <input type="date" id="eventDate" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-rose-400 focus:border-transparent outline-none transition-all text-sm">
+                            <span class="error-msg text-xs text-rose-500 hidden mt-1">Selecciona una fecha válida.</span>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1">Tipo de Entrega *</label>
+                            <div class="flex gap-4 pt-1">
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="radio" name="deliveryType" value="pickup" checked class="text-rose-500 focus:ring-rose-400">
+                                    <span class="text-sm font-medium text-gray-700">Recoger en Tienda</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="radio" name="deliveryType" value="delivery" class="text-rose-500 focus:ring-rose-400">
+                                    <span class="text-sm font-medium text-gray-700">Envío a Domicilio</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dirección (Se activa dinámicamente) -->
+                    <div id="addressContainer" class="hidden transition-all duration-300">
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">Dirección Completa de Entrega *</label>
+                        <input type="text" id="deliveryAddress" placeholder="Calle, Número, Colonia, Código Postal, Referencias" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-rose-400 focus:border-transparent outline-none transition-all text-sm">
+                        <span class="error-msg text-xs text-rose-500 hidden mt-1">Ingresa la dirección para el envío.</span>
+                    </div>
+                </div>
+
+                <!-- ESTIMACIÓN DE PRECIO Y BOTÓN DE ENVÍO -->
+                <div class="bg-amber-50/60 p-4 rounded-2xl border border-amber-200/60 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div>
+                        <p class="text-xs text-amber-800 font-medium">Estimado aproximado:</p>
+                        <p id="totalPriceEstimate" class="font-playfair text-2xl font-bold text-rose-600">$450.00 MXN</p>
+                    </div>
+                    <button type="submit" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-rose-500 to-amber-500 text-white font-bold rounded-xl shadow-lg hover:shadow-rose-200 hover:scale-105 active:scale-95 transition-all text-center flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-paper-plane"></i> Enviar Pedido por WhatsApp
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 4: MAPA Y UBICACIÓN DE CÓMO LLEGAR -->
+    <section id="location" class="py-20 px-6 bg-white relative border-t border-rose-100">
+        <div class="max-w-7xl mx-auto space-y-12">
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <span class="text-rose-500 font-semibold text-sm tracking-widest uppercase">Visítanos & Cobertura</span>
+                <h2 class="font-playfair text-3xl sm:text-5xl font-bold text-gray-900">¿Cómo Llegar a Nuestra Pastelería?</h2>
+                <p class="text-gray-600">Ven a degustar nuestros postres recién horneados o solicita tu entrega a domicilio dentro de nuestra zona de cobertura.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                
+                <!-- Tarjeta de Información de Ubicación -->
+                <div class="bg-gradient-to-br from-brand-cream to-rose-50 p-8 rounded-3xl border border-rose-100 shadow-lg space-y-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-2xl bg-rose-500 text-white flex items-center justify-center text-xl shadow-md">
+                            <i class="fa-solid fa-store"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-playfair text-xl font-bold text-gray-900">Boutique Principal</h3>
+                            <p class="text-xs text-rose-500 font-medium">Dulce Arte Pâtisserie</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4 text-sm text-gray-600">
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot text-rose-500 mt-1"></i>
+                            <div>
+                                <strong class="text-gray-800 block">Dirección:</strong>
+                                Av. Paseo de la Reforma 222, Juárez, Cuauhtémoc, 06600 Ciudad de México, CDMX.
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-clock text-rose-500 mt-1"></i>
+                            <div>
+                                <strong class="text-gray-800 block">Horarios de Atención:</strong>
+                                <p>Lunes a Sábado: 8:00 AM – 8:00 PM</p>
+                                <p>Domingos: 9:00 AM – 5:00 PM</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-truck-ramp-box text-rose-500 mt-1"></i>
+                            <div>
+                                <strong class="text-gray-800 block">Zona de Envío Directo:</strong>
+                                Cobertura hasta 10 km a la redonda con transporte refrigerado.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botones de Navegación Rápida -->
+                    <div class="pt-4 border-t border-rose-200/60 space-y-3">
+                        <a href="https://maps.google.com" target="_blank" rel="noopener" class="w-full py-3 bg-rose-500 hover:bg-rose-600 text-white font-semibold rounded-xl transition-all shadow-md flex items-center justify-center gap-2 text-sm">
+                            <i class="fa-solid fa-diamond-turn-right"></i> Abrir en Google Maps
+                        </a>
+                        <a href="https://waze.com" target="_blank" rel="noopener" class="w-full py-3 bg-sky-500 hover:bg-sky-600 text-white font-semibold rounded-xl transition-all shadow-md flex items-center justify-center gap-2 text-sm">
+                            <i class="fa-solid fa-route"></i> Abrir con Waze
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mapa Interactivo Leaflet -->
+                <div class="lg:col-span-2 bg-gray-100 rounded-3xl overflow-hidden shadow-xl border border-rose-100 h-[450px] relative z-10" id="map">
+                    <!-- El mapa se renderiza aquí mediante JavaScript -->
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white py-12 px-6 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-rose-500 flex items-center justify-center text-white">
+                        <i class="fa-solid fa-cake-candles text-sm"></i>
+                    </div>
+                    <span class="font-playfair text-xl font-bold">Dulce Arte</span>
+                </div>
+                <p class="text-gray-400 text-xs leading-relaxed">
+                    Pastelería fina y alta repostería. Creamos postres que encantan la vista y enamoran el paladar.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="font-playfair text-lg font-bold mb-4 text-amber-300">Navegación</h4>
+                <ul class="space-y-2 text-xs text-gray-400">
+                    <li><a href="#home" class="hover:text-rose-400 transition-colors">Inicio</a></li>
+                    <li><a href="#about" class="hover:text-rose-400 transition-colors">Nosotros</a></li>
+                    <li><a href="#products" class="hover:text-rose-400 transition-colors">Catálogo</a></li>
+                    <li><a href="#contact" class="hover:text-rose-400 transition-colors">Cotizador</a></li>
+                    <li><a href="#location" class="hover:text-rose-400 transition-colors">Ubicación</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-playfair text-lg font-bold mb-4 text-amber-300">Contacto</h4>
+                <ul class="space-y-2 text-xs text-gray-400">
+                    <li><i class="fa-solid fa-phone text-rose-400 mr-2"></i> +52 55 1234 5678</li>
+                    <li><i class="fa-solid fa-envelope text-rose-400 mr-2"></i> hola@dulcearte.com</li>
+                    <li><i class="fa-solid fa-location-dot text-rose-400 mr-2"></i> CDMX, México</li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-playfair text-lg font-bold mb-4 text-amber-300">Síguenos</h4>
+                <div class="flex gap-4 text-lg">
+                    <a href="#" class="w-9 h-9 rounded-full bg-gray-800 hover:bg-rose-500 flex items-center justify-center transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="w-9 h-9 rounded-full bg-gray-800 hover:bg-rose-500 flex items-center justify-center transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="w-9 h-9 rounded-full bg-gray-800 hover:bg-rose-500 flex items-center justify-center transition-colors"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto pt-8 mt-8 border-t border-gray-800 text-center text-xs text-gray-500">
+            &copy; 2026 Dulce Arte Pâtisserie. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <!-- MODAL DE ÉXITO AL ENVIAR FORMULARIO -->
+    <div id="successModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-8 max-w-md w-full text-center space-y-4 shadow-2xl border border-rose-100 transform transition-all scale-95 opacity-0" id="modalCard">
+            <div class="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-500 text-4xl mx-auto animate-bounce">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 class="font-playfair text-2xl font-bold text-gray-900">¡Pedido Enviado!</h3>
+            <p class="text-sm text-gray-600">Hemos generado la solicitud para tu pastel. Te redirigiremos a WhatsApp para confirmar los detalles finales.</p>
+            <button onclick="closeModal()" class="w-full py-3 bg-rose-500 hover:bg-rose-600 text-white font-semibold rounded-xl transition-all">Entendido</button>
+        </div>
+    </div>
+
+    <!-- Leaflet JS (para el mapa) -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    
+    <!-- JavaScript Principal -->
+    <script src="function.js"></script>
+</body>
+</html>
