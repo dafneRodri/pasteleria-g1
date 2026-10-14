@@ -1,70 +1,74 @@
-// Base de datos de productos con información e imágenes locales
-const PRODUCTOS_DETALLE = {
-    p1: {
-        titulo: "Pastel Nupcial Elegancia",
-        precio: "$1,200 MXN",
-        categoria: "BODAS & XV AÑOS",
-        imagen: "pastelBoda.jpeg",
-        descripcion: "Diseñado para bodas inolvidables. Cuatro niveles de suave pan de vainilla humedecido con jarabe de flor de azahar, relleno de crema artesanal y flores de azúcar hechas a mano.",
-        ingredientes: "Vainilla natural, manteca de cacao, harina de trigo, crema de leche fresca y azúcar refinada.",
-        porciones: "50 a 70 personas",
-        tiempoPreparacion: "3 días"
-    },
-    p2: {
-        titulo: "Cumpleaños Choco-Art",
-        precio: "$1,250 MXN",
-        categoria: "CUMPLEAÑOS",
-        imagen: "pastelChocolate.jpg",
-        descripcion: "Bizcocho húmedo de tres chocolates belgas decorado con trufas finas, macaron de frambuesa y baño de ganache brillante.",
-        ingredientes: "Chocolate 70% cacao, avellanas tostadas, crema de leche fresca.",
-        porciones: "15 a 20 personas",
-        tiempoPreparacion: "24 horas"
-    },
-    p3: {
-        titulo: "Pastel Red Velvet & Fresas",
-        precio: "$480 MXN",
-        categoria: "INDIVIDUALES",
-        imagen: "pastelRedVelvet.jpg",
-        descripcion: "Esponjoso pan terciopelo rojo intercalado con suaves capas de betún de queso crema artesanal, decorado con abundantes fresas frescas.",
-        ingredientes: "Harina de trigo, cacao ligero, queso crema mascarpone, fresas de cultivo local.",
-        porciones: "10 a 14 personas",
-        tiempoPreparacion: "24 horas"
-    },
-    p4: {
-        titulo: "Macarrones Surtidos París",
-        precio: "$350 MXN",
-        categoria: "POSTRES INDIVIDUALES",
-        imagen: "Maccarrons.jpg",
-        descripcion: "Selección de macarons franceses crocantes por fuera y suaves por dentro con rellenos de pistache, frambuesa, limón y chocolate.",
-        ingredientes: "Harina de almendra fina, clara de huevo, azúcar glass y mermeladas de fruta.",
-        porciones: "10 a 12 piezas",
-        tiempoPreparacion: "24 horas"
-    },
-    p5: {
-        titulo: "Caja de Galletas Gourmet",
-        precio: "$320 MXN",
-        categoria: "GALLETAS",
-        imagen: "galletas1.jpg",
-        descripcion: "Caja especial con galletas artesanales estilo New York con toppings de Nutella, Lotus Biscoff y galletas Oreo.",
-        ingredientes: "Harina de trigo, mantequilla de leche, galletas Biscoff, Oreo y chocolate.",
-        porciones: "Caja con 6 galletas gigantes",
-        tiempoPreparacion: "24 horas"
-    },
-    p6: {
-        titulo: "Pastel Nupcial Minimalista",
-        precio: "$850 MXN",
-        categoria: "BODAS",
-        imagen: "pastelBoda2.jpg",
-        descripcion: "Pastel de 2 niveles con terminado texturizado en betún de mantequilla blanca, arreglo de flores naturales y topper decorativo.",
-        ingredientes: "Pan de vainilla o almendra, betún de mantequilla vegetal y flores frescas.",
-        porciones: "25 a 35 personas",
-        tiempoPreparacion: "2 días"
-    }
-};
-
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* 1. NAVEGACIÓN MÓVIL TOGGLE */
+    // 1. ESCRIBE AQUÍ TU NÚMERO REAL DE WHATSAPP (52 + 10 dígitos)
+    // Ejemplo para CDMX/Edomex: 52 + 55 + 8 dígitos locales = 12 dígitos en total
+    const NUMERO_WHATSAPP_TIENDA = "525512345678"; // Reemplaza con tu número real de WhatsApp
+
+    /* Base de datos de productos */
+    const PRODUCTOS_DETALLE = {
+        p1: {
+            titulo: "Pastel Nupcial Elegancia",
+            precio: "$1,200 MXN",
+            categoria: "BODAS y XV AÑOS",
+            imagen: "pastelBoda.jpeg",
+            descripcion: "Diseñado para bodas inolvidables. Cuatro niveles de suave pan de vainilla humedecido con jarabe de flor de azahar, relleno de crema artesanal y flores de azúcar hechas a mano.",
+            ingredientes: "Vainilla natural, manteca de cacao, harina de trigo, crema de leche fresca y azúcar refinada.",
+            porciones: "50 a 70 personas",
+            tiempoPreparacion: "3 días"
+        },
+        p2: {
+            titulo: "Cumpleaños Choco-Art",
+            precio: "$1,250 MXN",
+            categoria: "CUMPLEAÑOS",
+            imagen: "pastelChocolate.jpg",
+            descripcion: "Bizcocho húmedo de tres chocolates belgas decorado con trufas finas, macaron de frambuesa y baño de ganache brillante.",
+            ingredientes: "Chocolate 70% cacao, avellanas tostadas, crema de leche fresca.",
+            porciones: "15 a 20 personas",
+            tiempoPreparacion: "24 horas"
+        },
+        p3: {
+            titulo: "Pastel Red Velvet & Fresas",
+            precio: "$480 MXN",
+            categoria: "INDIVIDUALES",
+            imagen: "pastelRedVelvet.jpg",
+            descripcion: "Esponjoso pan terciopelo rojo intercalado con suaves capas de betún de queso crema artesanal, decorado con abundantes fresas frescas.",
+            ingredientes: "Harina de trigo, cacao ligero, queso crema mascarpone, fresas de cultivo local.",
+            porciones: "10 a 14 personas",
+            tiempoPreparacion: "24 horas"
+        },
+        p4: {
+            titulo: "Macarrones Surtidos París",
+            precio: "$350 MXN",
+            categoria: "POSTRES INDIVIDUALES",
+            imagen: "Maccarrons.jpg",
+            descripcion: "Selección de macarons franceses crocantes por fuera y suaves por dentro con rellenos de pistache, frambuesa, limón y chocolate.",
+            ingredientes: "Harina de almendra fina, clara de huevo, azúcar glass y mermeladas de fruta.",
+            porciones: "10 a 12 piezas",
+            tiempoPreparacion: "24 horas"
+        },
+        p5: {
+            titulo: "Caja de Galletas Gourmet",
+            precio: "$320 MXN",
+            categoria: "GALLETAS",
+            imagen: "galletas1.jpg",
+            descripcion: "Caja especial con galletas artesanales estilo New York con toppings de Nutella, Lotus Biscoff y galletas Oreo.",
+            ingredientes: "Harina de trigo, mantequilla de leche, galletas Biscoff, Oreo y chocolate.",
+            porciones: "Caja con 6 galletas gigantes",
+            tiempoPreparacion: "24 horas"
+        },
+        p6: {
+            titulo: "Pastel Nupcial Minimalista",
+            precio: "$850 MXN",
+            categoria: "BODAS",
+            imagen: "pastelBoda2.jpg",
+            descripcion: "Pastel de 2 niveles con terminado texturizado en betún de mantequilla blanca, arreglo de flores naturales y topper decorativo.",
+            ingredientes: "Pan de vainilla o almendra, betún de mantequilla vegetal y flores frescas.",
+            porciones: "25 a 35 personas",
+            tiempoPreparacion: "2 días"
+        }
+    };
+
+    /* Menú móvil */
     const botonMenuMovil = document.getElementById('boton-menu-movil');
     const menuMovil = document.getElementById('menu-movil');
     const iconoMenu = document.getElementById('icono-menu');
@@ -73,11 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (botonMenuMovil) {
         botonMenuMovil.addEventListener('click', () => {
             menuMovil.classList.toggle('hidden');
-            if (menuMovil.classList.contains('hidden')) {
-                iconoMenu.className = 'fa-solid fa-bars';
-            } else {
-                iconoMenu.className = 'fa-solid fa-xmark';
-            }
+            iconoMenu.className = menuMovil.classList.contains('hidden') ? 'fa-solid fa-bars' : 'fa-solid fa-xmark';
         });
 
         enlacesMovil.forEach(enlace => {
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* 2. FILTRADO DE PRODUCTOS */
+    /* Filtros */
     const botonesFiltro = document.querySelectorAll('.boton-filtro');
     const tarjetasProductos = document.querySelectorAll('.tarjeta-producto');
 
@@ -103,37 +103,28 @@ document.addEventListener('DOMContentLoaded', () => {
             boton.classList.remove('bg-gray-100', 'text-gray-600');
 
             const filtro = boton.dataset.filtro;
-
             tarjetasProductos.forEach(tarjeta => {
-                if (filtro === 'todos' || tarjeta.dataset.categoria === filtro) {
-                    tarjeta.style.display = 'block';
-                } else {
-                    tarjeta.style.display = 'none';
-                }
+                tarjeta.style.display = (filtro === 'todos' || tarjeta.dataset.categoria === filtro) ? 'block' : 'none';
             });
         });
     });
 
-    /* 3. ABRIR VENTANA DE INFORMACIÓN DEL POSTRE */
+    /* Modal de Producto */
     let productoActualModal = "";
 
     tarjetasProductos.forEach(tarjeta => {
         tarjeta.addEventListener('click', (e) => {
             if (e.target.closest('.btn-cotizar-tarjeta')) return;
-            
             const idProducto = tarjeta.dataset.id;
             const datos = PRODUCTOS_DETALLE[idProducto];
-            if (datos) {
-                abrirVentanaProducto(datos);
-            }
+            if (datos) abrirVentanaProducto(datos);
         });
     });
 
     document.querySelectorAll('.btn-cotizar-tarjeta').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
-            const nombre = btn.dataset.nombre;
-            seleccionarProductoYScroll(nombre);
+            seleccionarProductoYScroll(btn.dataset.nombre);
         });
     });
 
@@ -141,16 +132,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (botonCotizarModal) {
         botonCotizarModal.addEventListener('click', () => {
             cerrarVentanaProducto();
-            if (productoActualModal) {
-                seleccionarProductoYScroll(productoActualModal);
-            }
+            if (productoActualModal) seleccionarProductoYScroll(productoActualModal);
         });
     }
 
     const btnCerrarModalProducto = document.getElementById('btnCerrarModalProducto');
-    if (btnCerrarModalProducto) {
-        btnCerrarModalProducto.addEventListener('click', cerrarVentanaProducto);
-    }
+    if (btnCerrarModalProducto) btnCerrarModalProducto.addEventListener('click', cerrarVentanaProducto);
 
     const ventanaProducto = document.getElementById('ventanaProducto');
     if (ventanaProducto) {
@@ -167,11 +154,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const btnCerrarModalExito = document.getElementById('btnCerrarModalExito');
-    if (btnCerrarModalExito) {
-        btnCerrarModalExito.addEventListener('click', cerrarVentanaExito);
-    }
+    if (btnCerrarModalExito) btnCerrarModalExito.addEventListener('click', cerrarVentanaExito);
 
-    /* 4. FORMULARIO Y COTIZADOR */
+    /* Elementos del Formulario y Cotizador */
     const formularioPedido = document.getElementById('formularioPedido');
     const radiosEntrega = document.querySelectorAll('input[name="tipoEntrega"]');
     const contenedorDireccion = document.getElementById('contenedorDireccion');
@@ -179,22 +164,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const tamanoPastelSelect = document.getElementById('tamanoPastel');
     const precioEstimadoTotal = document.getElementById('precioEstimadoTotal');
 
-    radiosEntrega.forEach(radio => {
-        radio.addEventListener('change', (e) => {
-            if (e.target.value === 'domicilio') {
-                contenedorDireccion.classList.remove('hidden');
-            } else {
-                contenedorDireccion.classList.add('hidden');
-            }
-            calcularPrecio();
-        });
-    });
-
     function calcularPrecio() {
+        if (!tipoPastelSelect || !tamanoPastelSelect || !precioEstimadoTotal) return;
+
         let precioBase = 350;
         const pastelSeleccionado = tipoPastelSelect.value;
         const multiplicadorTamano = parseInt(tamanoPastelSelect.value) || 10;
-        const esDomicilio = document.querySelector('input[name="tipoEntrega"]:checked').value === 'domicilio';
+        const radioChecked = document.querySelector('input[name="tipoEntrega"]:checked');
+        const esDomicilio = radioChecked ? radioChecked.value === 'domicilio' : false;
 
         if (pastelSeleccionado.includes('Nupcial')) precioBase = 800;
         else if (pastelSeleccionado.includes('Cumpleaños') || pastelSeleccionado.includes('Choco-Art')) precioBase = 500;
@@ -208,11 +185,21 @@ document.addEventListener('DOMContentLoaded', () => {
         precioEstimadoTotal.innerText = `$${total.toFixed(2)} MXN`;
     }
 
+    radiosEntrega.forEach(radio => {
+        radio.addEventListener('change', (e) => {
+            if (contenedorDireccion) {
+                contenedorDireccion.classList.toggle('hidden', e.target.value !== 'domicilio');
+            }
+            calcularPrecio();
+        });
+    });
+
     if (tipoPastelSelect && tamanoPastelSelect) {
         tipoPastelSelect.addEventListener('change', calcularPrecio);
         tamanoPastelSelect.addEventListener('change', calcularPrecio);
     }
 
+    /* Envío a WhatsApp */
     if (formularioPedido) {
         formularioPedido.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -222,21 +209,22 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('input, select').forEach(el => el.classList.remove('campo-error'));
 
             const nombre = document.getElementById('nombreCliente');
-            if (!nombre.value.trim()) { mostrarError(nombre); esValido = false; }
+            if (!nombre || !nombre.value.trim()) { if(nombre) mostrarError(nombre); esValido = false; }
 
             const telefono = document.getElementById('telefonoCliente');
-            if (!telefono.value.trim() || telefono.value.replace(/\D/g, '').length < 8) { mostrarError(telefono); esValido = false; }
+            if (!telefono || !telefono.value.trim() || telefono.value.replace(/\D/g, '').length < 8) { if(telefono) mostrarError(telefono); esValido = false; }
 
             const correo = document.getElementById('correoCliente');
             const formatoCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!formatoCorreo.test(correo.value.trim())) { mostrarError(correo); esValido = false; }
+            if (!correo || !formatoCorreo.test(correo.value.trim())) { if(correo) mostrarError(correo); esValido = false; }
 
-            if (!tipoPastelSelect.value) { mostrarError(tipoPastelSelect); esValido = false; }
+            if (!tipoPastelSelect || !tipoPastelSelect.value) { if(tipoPastelSelect) mostrarError(tipoPastelSelect); esValido = false; }
 
             const fecha = document.getElementById('fechaEvento');
-            if (!fecha.value) { mostrarError(fecha); esValido = false; }
+            if (!fecha || !fecha.value) { if(fecha) mostrarError(fecha); esValido = false; }
 
-            const esDomicilio = document.querySelector('input[name="tipoEntrega"]:checked').value === 'domicilio';
+            const radioChecked = document.querySelector('input[name="tipoEntrega"]:checked');
+            const esDomicilio = radioChecked ? radioChecked.value === 'domicilio' : false;
             let calleVal = "", coloniaVal = "", cpVal = "", refVal = "";
 
             if (esDomicilio) {
@@ -245,33 +233,36 @@ document.addEventListener('DOMContentLoaded', () => {
                 const cp = document.getElementById('codigoPostal');
                 const ref = document.getElementById('referenciasUbicacion');
 
-                if (!calle.value.trim()) { mostrarError(calle); esValido = false; } else calleVal = calle.value.trim();
-                if (!colonia.value.trim()) { mostrarError(colonia); esValido = false; } else coloniaVal = colonia.value.trim();
-                if (!cp.value.trim() || cp.value.trim().length < 4) { mostrarError(cp); esValido = false; } else cpVal = cp.value.trim();
+                if (!calle || !calle.value.trim()) { if(calle) mostrarError(calle); esValido = false; } else calleVal = calle.value.trim();
+                if (!colonia || !colonia.value.trim()) { if(colonia) mostrarError(colonia); esValido = false; } else coloniaVal = colonia.value.trim();
+                if (!cp || !cp.value.trim() || cp.value.trim().length < 4) { if(cp) mostrarError(cp); esValido = false; } else cpVal = cp.value.trim();
                 if (ref) refVal = ref.value.trim();
             }
 
             if (esValido) {
-                const numPasteleria = "525512345678";
-                let textoMensaje = `¡Hola *Dulce Arte Pâtisserie*! 🍰✨%0AMe gustaría solicitar el siguiente pedido:%0A%0A` +
-                    `👤 *Cliente:* ${encodeURIComponent(nombre.value.trim())}%0A` +
-                    `📞 *Teléfono:* ${encodeURIComponent(telefono.value.trim())}%0A` +
-                    `📧 *Correo:* ${encodeURIComponent(correo.value.trim())}%0A` +
-                    `🎂 *Producto:* ${encodeURIComponent(tipoPastelSelect.value)}%0A` +
-                    `👥 *Tamaño:* ${encodeURIComponent(tamanoPastelSelect.options[tamanoPastelSelect.selectedIndex].text)}%0A` +
-                    `📅 *Fecha:* ${encodeURIComponent(fecha.value)}%0A` +
-                    `🚚 *Entrega:* ${esDomicilio ? 'Envío a Domicilio' : 'Recoger en Sucursal'}%0A`;
+                const notasElem = document.getElementById('notasPastel');
+                const notasVal = notasElem ? notasElem.value.trim() : "";
+
+                let textoMensaje = `¡Hola *D&A Pasteles*! 🍰✨\nMe gustaría solicitar el siguiente pedido:\n\n` +
+                    `👤 *Cliente:* ${nombre.value.trim()}\n` +
+                    `📞 *Teléfono:* ${telefono.value.trim()}\n` +
+                    `📧 *Correo:* ${correo.value.trim()}\n` +
+                    `🎂 *Producto:* ${tipoPastelSelect.value}\n` +
+                    `👥 *Tamaño:* ${tamanoPastelSelect.options[tamanoPastelSelect.selectedIndex].text}\n` +
+                    `📅 *Fecha:* ${fecha.value}\n` +
+                    `🚚 *Entrega:* ${esDomicilio ? 'Envío a Domicilio' : 'Recoger en Sucursal'}\n`;
 
                 if (esDomicilio) {
-                    textoMensaje += `📍 *Dirección:* ${encodeURIComponent(calleVal)}, ${encodeURIComponent(coloniaVal)}, C.P. ${encodeURIComponent(cpVal)}%0A`;
-                    if (refVal) textoMensaje += `🏠 *Referencias:* ${encodeURIComponent(refVal)}%0A`;
+                    textoMensaje += `📍 *Dirección:* ${calleVal}, ${coloniaVal}, C.P. ${cpVal}\n`;
+                    if (refVal) textoMensaje += `🏠 *Referencias:* ${refVal}\n`;
                 }
 
-                const notasVal = document.getElementById('notasPastel').value.trim();
-                if (notasVal) textoMensaje += `📝 *Notas:* ${encodeURIComponent(notasVal)}%0A`;
-                textoMensaje += `%0A💰 *Estimado:* ${encodeURIComponent(precioEstimadoTotal.innerText)}`;
+                if (notasVal) textoMensaje += `📝 *Notas:* ${notasVal}\n`;
+                textoMensaje += `\n💰 *Estimado:* ${precioEstimadoTotal.innerText}`;
 
-                window.open(`https://wa.me/${numPasteleria}?text=${textoMensaje}`, '_blank');
+                const urlWhatsapp = `https://api.whatsapp.com/send?phone=${NUMERO_WHATSAPP_TIENDA}&text=${encodeURIComponent(textoMensaje)}`;
+
+                window.open(urlWhatsapp, '_blank');
                 abrirVentanaExito();
             }
         });
@@ -283,10 +274,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (spanError) spanError.classList.remove('hidden');
     }
 
-    /* 5. FUNCIONES PARA MOSTRAR/OCULTAR MODAL */
     function abrirVentanaProducto(datos) {
         productoActualModal = datos.titulo;
         const ventana = document.getElementById('ventanaProducto');
+        if (!ventana) return;
         
         document.getElementById('imagenModalProducto').src = datos.imagen;
         document.getElementById('tituloModalProducto').innerText = datos.titulo;
@@ -298,45 +289,36 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('tiempoModalProducto').innerText = datos.tiempoPreparacion;
 
         ventana.classList.remove('hidden');
-        setTimeout(() => {
-            ventana.classList.add('activo');
-        }, 10);
+        setTimeout(() => ventana.classList.add('activo'), 10);
     }
 
     function cerrarVentanaProducto() {
         const ventana = document.getElementById('ventanaProducto');
         if (ventana) {
             ventana.classList.remove('activo');
-            setTimeout(() => {
-                ventana.classList.add('hidden');
-            }, 300);
+            setTimeout(() => ventana.classList.add('hidden'), 300);
         }
     }
 
     function seleccionarProductoYScroll(nombreProducto) {
-        const comboPastel = document.getElementById('tipoPastel');
-        if (comboPastel) {
-            for (let i = 0; i < comboPastel.options.length; i++) {
-                if (comboPastel.options[i].value.includes(nombreProducto) || nombreProducto.includes(comboPastel.options[i].value)) {
-                    comboPastel.selectedIndex = i;
+        if (tipoPastelSelect) {
+            for (let i = 0; i < tipoPastelSelect.options.length; i++) {
+                if (tipoPastelSelect.options[i].value.includes(nombreProducto) || nombreProducto.includes(tipoPastelSelect.options[i].value)) {
+                    tipoPastelSelect.selectedIndex = i;
                     break;
                 }
             }
             calcularPrecio();
         }
         const seccionContacto = document.getElementById('contacto');
-        if (seccionContacto) {
-            seccionContacto.scrollIntoView({ behavior: 'smooth' });
-        }
+        if (seccionContacto) seccionContacto.scrollIntoView({ behavior: 'smooth' });
     }
 
     function abrirVentanaExito() {
         const ventana = document.getElementById('ventanaExito');
         if (ventana) {
             ventana.classList.remove('hidden');
-            setTimeout(() => {
-                ventana.classList.add('activo');
-            }, 10);
+            setTimeout(() => ventana.classList.add('activo'), 10);
         }
     }
 
@@ -344,13 +326,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const ventana = document.getElementById('ventanaExito');
         if (ventana) {
             ventana.classList.remove('activo');
-            setTimeout(() => {
-                ventana.classList.add('hidden');
-            }, 300);
+            setTimeout(() => ventana.classList.add('hidden'), 300);
         }
     }
 
-    /* 6. CONFIGURACIÓN DEL MAPA LEAFLET */
+    /* Mapa Leaflet */
     if (document.getElementById('mapa')) {
         const lat = 19.4270;
         const lng = -99.1677;
