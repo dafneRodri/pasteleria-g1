@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
             tiempoPreparacion: "3 días"
         },
         p2: {
-            titulo: "Cumpleaños Choco-Art",
+            titulo: "Cumpleaños de chocolate",
             precio: "$1,250 MXN",
             categoria: "CUMPLEAÑOS",
             imagen: "pastelChocolate.jpg",
