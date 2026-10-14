@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dulce Arte Pâtisserie | Pastelería Artesanal</title>
     
-    <!-- Google Fonts -->
+    <!-- Fuentes de Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- FontAwesome Icons -->
+    <!-- Íconos FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Leaflet CSS (para el Mapa) -->
+    <!-- Mapa Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
     
     <!-- Tailwind CSS CDN -->
@@ -25,12 +25,11 @@
                     colors: {
                         brand: {
                             pink: '#F8B195',
-                            rose: '#F67280',
+                            rose: '#E13B8A',
+                            darkrose: '#C2185B',
                             brown: '#355C7D',
                             darkbrown: '#2A363B',
-                            cream: '#FFF6F6',
-                            gold: '#E5C158',
-                            goldhover: '#CBA234'
+                            cream: '#FFF6F6'
                         }
                     },
                     fontFamily: {
@@ -45,85 +44,81 @@
     <!-- Estilos Personalizados -->
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="font-poppins bg-brand-cream text-brand-darkbrown antialiased selection:bg-brand-rose selection:text-white overflow-x-hidden">
+<body class="font-poppins bg-brand-cream text-brand-darkbrown antialiased selection:bg-rose-500 selection:text-white overflow-x-hidden">
 
-    <!-- NAVBAR -->
-    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 px-6 md:px-12 backdrop-blur-md bg-white/75 border-b border-rose-100 shadow-sm" id="navbar">
+    <!-- BARRA DE NAVEGACIÓN -->
+    <header class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 py-4 px-6 md:px-12 backdrop-blur-md bg-white/80 border-b border-rose-100 shadow-sm" id="barra-navegacion">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <a href="#home" class="flex items-center gap-3 group">
-                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-rose-400 to-amber-300 flex items-center justify-center text-white shadow-md transform group-hover:rotate-12 transition-transform duration-300">
+            <a href="#inicio" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-pink-500 to-amber-300 flex items-center justify-center text-white shadow-md transform group-hover:rotate-12 transition-transform duration-300">
                     <i class="fa-solid fa-cake-candles text-lg"></i>
                 </div>
-                <span class="font-playfair text-2xl font-extrabold tracking-tight bg-gradient-to-r from-rose-500 via-purple-600 to-amber-600 bg-clip-text text-transparent">Dulce Arte</span>
+                <span class="font-playfair text-2xl font-extrabold tracking-tight bg-gradient-to-r from-pink-600 via-rose-500 to-amber-600 bg-clip-text text-transparent">Dulce Arte</span>
             </a>
 
             <!-- Menú Desktop -->
             <nav class="hidden md:flex items-center gap-8 font-medium text-gray-700">
-                <a href="#home" class="hover:text-rose-500 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-rose-500 hover:after:w-full after:transition-all">Inicio</a>
-                <a href="#about" class="hover:text-rose-500 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-rose-500 hover:after:w-full after:transition-all">Nosotros</a>
-                <a href="#products" class="hover:text-rose-500 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-rose-500 hover:after:w-full after:transition-all">Productos & Servicios</a>
-                <a href="#contact" class="hover:text-rose-500 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-rose-500 hover:after:w-full after:transition-all">Haz tu Pedido</a>
-                <a href="#location" class="hover:text-rose-500 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-rose-500 hover:after:w-full after:transition-all">Ubicación</a>
+                <a href="#inicio" class="hover:text-pink-600 transition-colors relative py-1">Inicio</a>
+                <a href="#nosotros" class="hover:text-pink-600 transition-colors relative py-1">Nosotros</a>
+                <a href="#productos" class="hover:text-pink-600 transition-colors relative py-1">Productos & Servicios</a>
+                <a href="#contacto" class="hover:text-pink-600 transition-colors relative py-1">Haz tu Pedido</a>
+                <a href="#ubicacion" class="hover:text-pink-600 transition-colors relative py-1">Ubicación</a>
             </nav>
 
-            <a href="#contact" class="hidden md:inline-flex items-center gap-2 bg-gradient-to-r from-rose-500 to-amber-500 text-white font-semibold px-5 py-2.5 rounded-full shadow-lg hover:shadow-rose-300/50 hover:scale-105 active:scale-95 transition-all">
-                <i class="fa-solid fa-wand-magic-sparkles"></i> Cotizar Pastel
+            <a href="#contacto" class="hidden md:inline-flex items-center gap-2 bg-gradient-to-r from-pink-600 to-rose-500 text-white font-semibold px-5 py-2.5 rounded-full shadow-lg hover:shadow-pink-200 hover:scale-105 active:scale-95 transition-all">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> Cotizar Evento
             </a>
 
             <!-- Botón Menú Móvil -->
-            <button id="mobile-menu-btn" class="md:hidden text-2xl text-gray-700 focus:outline-none" aria-label="Abrir menú">
-                <i class="fa-solid fa-bars" id="menu-icon"></i>
+            <button id="boton-menu-movil" type="button" class="md:hidden text-2xl text-gray-700 focus:outline-none" aria-label="Abrir menú">
+                <i class="fa-solid fa-bars" id="icono-menu"></i>
             </button>
         </div>
 
-        <!-- Menú Móvil Desplegable -->
-        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-lg border-b border-rose-100 shadow-xl py-6 px-8 flex flex-col gap-4 text-center">
-            <a href="#home" class="mobile-link text-lg font-medium text-gray-800 hover:text-rose-500">Inicio</a>
-            <a href="#about" class="mobile-link text-lg font-medium text-gray-800 hover:text-rose-500">Nosotros</a>
-            <a href="#products" class="mobile-link text-lg font-medium text-gray-800 hover:text-rose-500">Productos & Servicios</a>
-            <a href="#contact" class="mobile-link text-lg font-medium text-gray-800 hover:text-rose-500">Haz tu Pedido</a>
-            <a href="#location" class="mobile-link text-lg font-medium text-gray-800 hover:text-rose-500">Ubicación</a>
-            <a href="#contact" class="mobile-link inline-block bg-gradient-to-r from-rose-500 to-amber-500 text-white font-semibold py-3 rounded-full shadow-md mt-2">Cotizar Pastel</a>
+        <!-- Menú Celular Desplegable -->
+        <div id="menu-movil" class="hidden md:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-lg border-b border-rose-100 shadow-xl py-6 px-8 flex flex-col gap-4 text-center">
+            <a href="#inicio" class="enlace-movil text-lg font-medium text-gray-800 hover:text-pink-600">Inicio</a>
+            <a href="#nosotros" class="enlace-movil text-lg font-medium text-gray-800 hover:text-pink-600">Nosotros</a>
+            <a href="#productos" class="enlace-movil text-lg font-medium text-gray-800 hover:text-pink-600">Productos & Servicios</a>
+            <a href="#contacto" class="enlace-movil text-lg font-medium text-gray-800 hover:text-pink-600">Haz tu Pedido</a>
+            <a href="#ubicacion" class="enlace-movil text-lg font-medium text-gray-800 hover:text-pink-600">Ubicación</a>
+            <a href="#contacto" class="enlace-movil inline-block bg-gradient-to-r from-pink-600 to-rose-500 text-white font-semibold py-3 rounded-full shadow-md mt-2">Cotizar Evento</a>
         </div>
     </header>
 
-    <!-- SECCIÓN 1: PORTADA / HERO -->
-    <section id="home" class="relative min-h-screen flex items-center justify-center pt-28 pb-16 px-6 overflow-hidden bg-gradient-to-b from-rose-50/60 via-amber-50/30 to-brand-cream">
-        <!-- Esferas de Fondo -->
-        <div class="absolute top-20 left-10 w-72 h-72 bg-rose-200/40 rounded-full filter blur-3xl animate-pulse"></div>
-        <div class="absolute bottom-10 right-10 w-96 h-96 bg-amber-200/40 rounded-full filter blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
-
+    <!-- PORTADA / HERO -->
+    <section id="inicio" class="relative min-h-screen flex items-center justify-center pt-28 pb-16 px-6 overflow-hidden bg-gradient-to-b from-rose-50/60 via-amber-50/30 to-brand-cream">
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
             <div class="space-y-6 text-center lg:text-left">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-rose-100/80 border border-rose-200 text-rose-600 text-sm font-semibold tracking-wide animate-bounce">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-pink-100/80 border border-pink-200 text-pink-600 text-sm font-semibold tracking-wide animate-bounce">
                     <i class="fa-solid fa-award"></i> Repostería Fina & Gourmet
                 </div>
                 <h1 class="font-playfair text-4xl sm:text-6xl lg:text-7xl font-extrabold text-gray-900 leading-tight">
-                    Creamos <span class="bg-gradient-to-r from-rose-500 via-pink-500 to-amber-500 bg-clip-text text-transparent">Momentos Inolvidables</span>
+                    Creamos <span class="bg-gradient-to-r from-pink-600 via-rose-500 to-amber-500 bg-clip-text text-transparent">Momentos Inolvidables</span>
                 </h1>
                 <p class="text-lg sm:text-xl text-gray-600 font-light max-w-xl mx-auto lg:mx-0">
-                    "Transformamos ingredientes de alta calidad en obras de arte comestibles para endulzar cada celebración de tu vida."
+                    "Transformamos ingredientes selectos en obras de arte comestibles para endulzar cada una de tus celebraciones."
                 </p>
                 <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
-                    <a href="#contact" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-rose-500 to-amber-500 text-white font-bold rounded-full shadow-lg shadow-rose-200 hover:shadow-xl hover:scale-105 active:scale-95 transition-all text-center flex items-center justify-center gap-2">
+                    <a href="#contacto" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-pink-600 to-rose-500 text-white font-bold rounded-full shadow-lg shadow-pink-200 hover:shadow-xl hover:scale-105 active:scale-95 transition-all text-center flex items-center justify-center gap-2">
                         <i class="fa-solid fa-wand-magic-sparkles"></i> Diseña tu Pastel
                     </a>
-                    <a href="#products" class="w-full sm:w-auto px-8 py-4 bg-white hover:bg-gray-50 text-gray-800 font-semibold rounded-full border border-gray-200 shadow-sm hover:shadow transition-all text-center flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-utensils text-rose-400"></i> Ver Catálogo
+                    <a href="#productos" class="w-full sm:w-auto px-8 py-4 bg-white hover:bg-gray-50 text-gray-800 font-semibold rounded-full border border-gray-200 shadow-sm hover:shadow transition-all text-center flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-utensils text-pink-500"></i> Ver Catálogo
                     </a>
                 </div>
 
                 <div class="pt-8 grid grid-cols-3 gap-4 border-t border-rose-100 max-w-md mx-auto lg:mx-0">
                     <div>
-                        <p class="font-playfair text-2xl sm:text-3xl font-bold text-rose-500">+100%</p>
+                        <p class="font-playfair text-2xl sm:text-3xl font-bold text-pink-600">100%</p>
                         <p class="text-xs sm:text-sm text-gray-500">Artesanal</p>
                     </div>
                     <div>
                         <p class="font-playfair text-2xl sm:text-3xl font-bold text-amber-500">+5,000</p>
-                        <p class="text-xs sm:text-sm text-gray-500">Sonrisas</p>
+                        <p class="text-xs sm:text-sm text-gray-500">Clientes Felices</p>
                     </div>
                     <div>
-                        <p class="font-playfair text-2xl sm:text-3xl font-bold text-rose-500">4.9 ★</p>
+                        <p class="font-playfair text-2xl sm:text-3xl font-bold text-pink-600">4.9 ★</p>
                         <p class="text-xs sm:text-sm text-gray-500">Calificación</p>
                     </div>
                 </div>
@@ -132,22 +127,12 @@
             <div class="relative">
                 <div class="relative mx-auto w-full max-w-md lg:max-w-none">
                     <div class="relative z-10 rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform hover:rotate-1 transition-transform duration-500">
-                        <img src="https://images.unsplash.com/photo-1535141192574-5d4897c13136?auto=format&fit=crop&w=1000&q=80" alt="Pastel gourmet" class="w-full h-[450px] object-cover">
+                        <img src="pastelBoda.jpeg" alt="Pastel de Bodas Gourmet" class="w-full h-[450px] object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-6">
                             <div class="text-white">
-                                <p class="text-xs uppercase tracking-widest text-amber-300 font-semibold">Edición Especial</p>
-                                <p class="font-playfair text-xl font-bold">Pastel Velvet de Frutos Rojos</p>
+                                <p class="text-xs uppercase tracking-widest text-amber-300 font-semibold">Especialidad de la Casa</p>
+                                <p class="font-playfair text-xl font-bold">Pastel Nupcial Flores de Azúcar</p>
                             </div>
-                        </div>
-                    </div>
-                    <!-- Tarjeta flotante de reseña -->
-                    <div class="absolute -bottom-6 -left-6 z-20 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-rose-100 hidden sm:flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-full bg-rose-100 flex items-center justify-center text-rose-500 font-bold">
-                            <i class="fa-solid fa-heart text-xl"></i>
-                        </div>
-                        <div>
-                            <p class="text-xs font-semibold text-gray-800">"¡El pastel de bodas fue mágico!"</p>
-                            <p class="text-[10px] text-gray-500">Sofía & Carlos — Clientes Felices</p>
                         </div>
                     </div>
                 </div>
@@ -155,303 +140,346 @@
         </div>
     </section>
 
-    <!-- SECCIÓN 2: CONTENIDO (ACERCA DE Y PRODUCTOS/SERVICIOS) -->
-    <section id="about" class="py-20 px-6 bg-white relative">
+    <!-- NOSOTROS -->
+    <section id="nosotros" class="py-20 px-6 bg-white relative">
         <div class="max-w-7xl mx-auto space-y-16">
-            
-            <!-- ACERCA DE MI PASTELERÍA -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div class="grid grid-cols-2 gap-4">
-                    <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80" alt="Chef preparando pastel" class="rounded-2xl shadow-md h-64 w-full object-cover transform translate-y-4">
-                    <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&w=600&q=80" alt="Postres gourmet" class="rounded-2xl shadow-md h-64 w-full object-cover">
+                    <img src="pastelRedVelvet.jpg" alt="Pastel Red Velvet" class="rounded-2xl shadow-md h-64 w-full object-cover transform translate-y-4">
+                    <img src="galletas1.jpg" alt="Caja de galletas gourmet" class="rounded-2xl shadow-md h-64 w-full object-cover">
                 </div>
                 <div class="space-y-6">
-                    <span class="text-rose-500 font-semibold text-sm tracking-widest uppercase">Nuestra Historia & Pasión</span>
-                    <h2 class="font-playfair text-3xl sm:text-5xl font-bold text-gray-900">Pasión horneada con amor artesanal</h2>
+                    <span class="text-pink-600 font-semibold text-sm tracking-widest uppercase">Nuestra Historia & Pasión</span>
+                    <h2 class="font-playfair text-3xl sm:text-5xl font-bold text-gray-900">Pasión horneada con sabor artesanal</h2>
                     <p class="text-gray-600 leading-relaxed">
-                        En <strong class="text-rose-500">Dulce Arte</strong> creemos que cada pastel cuenta una historia única. Nacimos con el sueño de combinar recetas tradicionales francesas con ingredientes locales de primera calidad.
+                        En <strong class="text-pink-600">Dulce Arte</strong> creemos que cada pastel cuenta una historia única. Nacimos con la ilusión de combinar la alta repostería con ingredientes frescos de la más alta calidad.
                     </p>
                     <p class="text-gray-600 leading-relaxed">
-                        No usamos conservantes artificiales ni premezclas industriales. Cada relleno, merengue y decoración es elaborado desde cero por nuestro equipo de chefs reposteros apasionados.
+                        No utilizamos conservadores artificiales ni mezclas preparadas. Cada relleno, betún y decoración se elabora diariamente desde cero por nuestro equipo repostero.
                     </p>
                     
                     <div class="grid grid-cols-2 gap-4 pt-2">
                         <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-check-circle text-rose-500 text-xl"></i>
-                            <span class="font-medium text-gray-800 text-sm">Ingredientes 100% Orgánicos</span>
+                            <i class="fa-solid fa-check-circle text-pink-600 text-xl"></i>
+                            <span class="font-medium text-gray-800 text-sm">Ingredientes 100% Naturales</span>
                         </div>
                         <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-check-circle text-rose-500 text-xl"></i>
+                            <i class="fa-solid fa-check-circle text-pink-600 text-xl"></i>
                             <span class="font-medium text-gray-800 text-sm">Diseños Personalizados</span>
                         </div>
                         <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-check-circle text-rose-500 text-xl"></i>
-                            <span class="font-medium text-gray-800 text-sm">Opciones Veganas & Gluten Free</span>
+                            <i class="fa-solid fa-check-circle text-pink-600 text-xl"></i>
+                            <span class="font-medium text-gray-800 text-sm">Opciones Veganas & Sin Gluten</span>
                         </div>
                         <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-check-circle text-rose-500 text-xl"></i>
+                            <i class="fa-solid fa-check-circle text-pink-600 text-xl"></i>
                             <span class="font-medium text-gray-800 text-sm">Entregas Puntuales</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- PRODUCTOS Y SERVICIOS -->
-            <div id="products" class="pt-16 border-t border-gray-100">
+            <!-- PRODUCTOS -->
+            <div id="productos" class="pt-16 border-t border-gray-100">
                 <div class="text-center max-w-3xl mx-auto space-y-4 mb-12">
-                    <span class="text-rose-500 font-semibold text-sm tracking-widest uppercase">Menú & Servicios</span>
+                    <span class="text-pink-600 font-semibold text-sm tracking-widest uppercase">Menú & Servicios</span>
                     <h2 class="font-playfair text-3xl sm:text-5xl font-bold text-gray-900">Nuestras Delicias & Servicios Especiales</h2>
-                    <p class="text-gray-600">Explora nuestro catálogo gourmet diseñado para satisfacer hasta los paladares más exigentes.</p>
+                    <p class="text-gray-600">Da clic en cualquier producto para consultar sus detalles e ingredientes.</p>
                 </div>
 
-                <!-- Filtros de categoría -->
+                <!-- Filtros -->
                 <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-4 mb-10">
-                    <button class="filter-btn active px-5 py-2 rounded-full font-medium text-sm transition-all bg-rose-500 text-white shadow-md shadow-rose-200" data-filter="all">Todos</button>
-                    <button class="filter-btn px-5 py-2 rounded-full font-medium text-sm transition-all bg-gray-100 text-gray-600 hover:bg-rose-100 hover:text-rose-600" data-filter="bodas">Bodas & Eventos</button>
-                    <button class="filter-btn px-5 py-2 rounded-full font-medium text-sm transition-all bg-gray-100 text-gray-600 hover:bg-rose-100 hover:text-rose-600" data-filter="cupcakes">Cupcakes & Minis</button>
-                    <button class="filter-btn px-5 py-2 rounded-full font-medium text-sm transition-all bg-gray-100 text-gray-600 hover:bg-rose-100 hover:text-rose-600" data-filter="fit">Veganos / Gluten-Free</button>
-                    <button class="filter-btn px-5 py-2 rounded-full font-medium text-sm transition-all bg-gray-100 text-gray-600 hover:bg-rose-100 hover:text-rose-600" data-filter="mesas">Mesas Dulces</button>
+                    <button type="button" class="boton-filtro activo px-5 py-2 rounded-full font-medium text-sm transition-all bg-pink-600 text-white shadow-md shadow-pink-200" data-filtro="todos">Todos</button>
+                    <button type="button" class="boton-filtro px-5 py-2 rounded-full font-medium text-sm transition-all bg-gray-100 text-gray-600 hover:bg-pink-50 hover:text-pink-600" data-filtro="bodas">Bodas & XV Años</button>
+                    <button type="button" class="boton-filtro px-5 py-2 rounded-full font-medium text-sm transition-all bg-gray-100 text-gray-600 hover:bg-pink-50 hover:text-pink-600" data-filtro="cumpleanos">Cumpleaños & Fiestas</button>
+                    <button type="button" class="boton-filtro px-5 py-2 rounded-full font-medium text-sm transition-all bg-gray-100 text-gray-600 hover:bg-pink-50 hover:text-pink-600" data-filtro="individuales">Postres Individuales</button>
+                    <button type="button" class="boton-filtro px-5 py-2 rounded-full font-medium text-sm transition-all bg-gray-100 text-gray-600 hover:bg-pink-50 hover:text-pink-600" data-filtro="mesas">Galletas & Especiales</button>
                 </div>
 
-                <!-- Grid de Productos -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="products-grid">
+                <!-- Tarjetas de Productos -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="contenedor-productos">
                     
                     <!-- Producto 1 -->
-                    <div class="product-card bg-white rounded-2xl overflow-hidden border border-rose-100 shadow-sm hover:shadow-xl transition-all duration-300 group" data-category="bodas">
+                    <div class="tarjeta-producto bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer" data-id="p1" data-categoria="bodas">
                         <div class="relative overflow-hidden h-64">
-                            <img src="https://images.unsplash.com/photo-1535141192574-5d4897c13136?auto=format&fit=crop&w=600&q=80" alt="Pastel Nupcial Rose Gold" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <span class="absolute top-4 right-4 bg-amber-400 text-white text-xs font-bold px-3 py-1 rounded-full shadow">Bestseller</span>
+                            <img src="pastelBoda.jpeg" alt="Pastel Nupcial Elegancia" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-4 right-4 bg-amber-400 text-white text-xs font-bold px-3 py-1 rounded-full shadow">El más pedido</span>
                         </div>
                         <div class="p-6 space-y-3">
                             <div class="flex justify-between items-start">
-                                <h3 class="font-playfair text-xl font-bold text-gray-900">Pastel Nupcial Elegance</h3>
-                                <span class="text-rose-500 font-bold text-lg">$1,200</span>
+                                <h3 class="font-playfair text-xl font-bold text-gray-900">Pastel Nupcial Elegancia</h3>
+                                <span class="text-pink-600 font-bold text-lg">$1,200</span>
                             </div>
-                            <p class="text-xs text-gray-500">3 pisos de vainilla de Madagascar con ganache de chocolate blanco y flores comestibles.</p>
-                            <button onclick="quickOrder('Pastel Nupcial Elegance')" class="w-full py-2.5 bg-rose-50 hover:bg-rose-500 text-rose-600 hover:text-white font-semibold rounded-xl border border-rose-200 transition-colors flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-cart-plus"></i> Seleccionar para Cotizar
-                            </button>
+                            <p class="text-xs text-gray-500">4 pisos de suave pan de vainilla con detalles florales hechos a mano.</p>
+                            <div class="flex items-center justify-between pt-2 border-t border-gray-100">
+                                <button type="button" class="btn-ver-detalles text-xs font-semibold text-gray-600 hover:text-pink-600 transition-colors flex items-center gap-1">
+                                    <i class="fa-solid fa-eye"></i> Ver Detalles
+                                </button>
+                                <button type="button" class="btn-cotizar-tarjeta px-4 py-2 bg-pink-600 hover:bg-pink-700 text-white text-xs font-semibold rounded-xl shadow transition-all active:scale-95" data-nombre="Pastel Nupcial Elegancia">
+                                    Cotizar
+                                </button>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Producto 2 -->
-                    <div class="product-card bg-white rounded-2xl overflow-hidden border border-rose-100 shadow-sm hover:shadow-xl transition-all duration-300 group" data-category="cupcakes">
+                    <div class="tarjeta-producto bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer" data-id="p2" data-categoria="cumpleanos">
                         <div class="relative overflow-hidden h-64">
-                            <img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?auto=format&fit=crop&w=600&q=80" alt="Box Cupcakes Gourmet" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <img src="pastelChocolate.jpg" alt="Cumpleaños Choco-Art" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-4 right-4 bg-pink-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">Favorito</span>
                         </div>
                         <div class="p-6 space-y-3">
                             <div class="flex justify-between items-start">
-                                <h3 class="font-playfair text-xl font-bold text-gray-900">Box Cupcakes Gourmet (x6)</h3>
-                                <span class="text-rose-500 font-bold text-lg">$280</span>
+                                <h3 class="font-playfair text-xl font-bold text-gray-900">Cumpleaños Choco-Art</h3>
+                                <span class="text-pink-600 font-bold text-lg">$1,250 MXN</span>
                             </div>
-                            <p class="text-xs text-gray-500">Surtido con Red Velvet, Nutella, Frambuesa, Maracuyá, Caramelo Salado y Oreo.</p>
-                            <button onclick="quickOrder('Box Cupcakes Gourmet (x6)')" class="w-full py-2.5 bg-rose-50 hover:bg-rose-500 text-rose-600 hover:text-white font-semibold rounded-xl border border-rose-200 transition-colors flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-cart-plus"></i> Seleccionar para Cotizar
-                            </button>
+                            <p class="text-xs text-gray-500">Bizcocho húmedo de tres chocolates belgas con trufas finas y baño de ganache.</p>
+                            <div class="flex items-center justify-between pt-2 border-t border-gray-100">
+                                <button type="button" class="btn-ver-detalles text-xs font-semibold text-gray-600 hover:text-pink-600 transition-colors flex items-center gap-1">
+                                    <i class="fa-solid fa-eye"></i> Ver Detalles
+                                </button>
+                                <button type="button" class="btn-cotizar-tarjeta px-4 py-2 bg-pink-600 hover:bg-pink-700 text-white text-xs font-semibold rounded-xl shadow transition-all active:scale-95" data-nombre="Cumpleaños Choco-Art">
+                                    Cotizar
+                                </button>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Producto 3 -->
-                    <div class="product-card bg-white rounded-2xl overflow-hidden border border-rose-100 shadow-sm hover:shadow-xl transition-all duration-300 group" data-category="fit">
+                    <div class="tarjeta-producto bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer" data-id="p3" data-categoria="individuales">
                         <div class="relative overflow-hidden h-64">
-                            <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=80" alt="Tarta Vegana de Chocolate" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <span class="absolute top-4 right-4 bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow">Sin Azúcar</span>
+                            <img src="pastelRedVelvet.jpg" alt="Pastel Red Velvet con Frutas" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
                         </div>
                         <div class="p-6 space-y-3">
                             <div class="flex justify-between items-start">
-                                <h3 class="font-playfair text-xl font-bold text-gray-900">Tarta Vegana Cacao & Avellana</h3>
-                                <span class="text-rose-500 font-bold text-lg">$450</span>
+                                <h3 class="font-playfair text-xl font-bold text-gray-900">Pastel Red Velvet & Fresas</h3>
+                                <span class="text-pink-600 font-bold text-lg">$480</span>
                             </div>
-                            <p class="text-xs text-gray-500">100% basada en plantas, endulzada con dátiles, harina de almendra sin gluten.</p>
-                            <button onclick="quickOrder('Tarta Vegana Cacao')" class="w-full py-2.5 bg-rose-50 hover:bg-rose-500 text-rose-600 hover:text-white font-semibold rounded-xl border border-rose-200 transition-colors flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-cart-plus"></i> Seleccionar para Cotizar
-                            </button>
+                            <p class="text-xs text-gray-500">Esponjoso pan terciopelo rojo intercalado con suave betún de queso crema.</p>
+                            <div class="flex items-center justify-between pt-2 border-t border-gray-100">
+                                <button type="button" class="btn-ver-detalles text-xs font-semibold text-gray-600 hover:text-pink-600 transition-colors flex items-center gap-1">
+                                    <i class="fa-solid fa-eye"></i> Ver Detalles
+                                </button>
+                                <button type="button" class="btn-cotizar-tarjeta px-4 py-2 bg-pink-600 hover:bg-pink-700 text-white text-xs font-semibold rounded-xl shadow transition-all active:scale-95" data-nombre="Pastel Red Velvet & Fresas">
+                                    Cotizar
+                                </button>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Producto 4 -->
-                    <div class="product-card bg-white rounded-2xl overflow-hidden border border-rose-100 shadow-sm hover:shadow-xl transition-all duration-300 group" data-category="mesas">
+                    <div class="tarjeta-producto bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer" data-id="p4" data-categoria="individuales">
                         <div class="relative overflow-hidden h-64">
-                            <img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=600&q=80" alt="Macarons Franceses" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <img src="Maccarrons.jpg" alt="Macarrones Franceses Surtidos" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
                         </div>
                         <div class="p-6 space-y-3">
                             <div class="flex justify-between items-start">
-                                <h3 class="font-playfair text-xl font-bold text-gray-900">Torre de Macarons Paris</h3>
-                                <span class="text-rose-500 font-bold text-lg">$650</span>
+                                <h3 class="font-playfair text-xl font-bold text-gray-900">Macarrones Surtidos París</h3>
+                                <span class="text-pink-600 font-bold text-lg">$350</span>
                             </div>
-                            <p class="text-xs text-gray-500">30 macarons surtidos montados en torre decorativa ideal para mesas de postres.</p>
-                            <button onclick="quickOrder('Torre de Macarons Paris')" class="w-full py-2.5 bg-rose-50 hover:bg-rose-500 text-rose-600 hover:text-white font-semibold rounded-xl border border-rose-200 transition-colors flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-cart-plus"></i> Seleccionar para Cotizar
-                            </button>
+                            <p class="text-xs text-gray-500">Surtido de macarons de pistache, frambuesa, chocolate y vainilla.</p>
+                            <div class="flex items-center justify-between pt-2 border-t border-gray-100">
+                                <button type="button" class="btn-ver-detalles text-xs font-semibold text-gray-600 hover:text-pink-600 transition-colors flex items-center gap-1">
+                                    <i class="fa-solid fa-eye"></i> Ver Detalles
+                                </button>
+                                <button type="button" class="btn-cotizar-tarjeta px-4 py-2 bg-pink-600 hover:bg-pink-700 text-white text-xs font-semibold rounded-xl shadow transition-all active:scale-95" data-nombre="Macarrones Surtidos París">
+                                    Cotizar
+                                </button>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Producto 5 -->
-                    <div class="product-card bg-white rounded-2xl overflow-hidden border border-rose-100 shadow-sm hover:shadow-xl transition-all duration-300 group" data-category="bodas">
+                    <div class="tarjeta-producto bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer" data-id="p5" data-categoria="mesas">
                         <div class="relative overflow-hidden h-64">
-                            <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=600&q=80" alt="Pastel de Cumpleaños Mágico" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <img src="galletas1.jpg" alt="Caja de Galletas Artesanales" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-4 right-4 bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow">Caja Especial</span>
                         </div>
                         <div class="p-6 space-y-3">
                             <div class="flex justify-between items-start">
-                                <h3 class="font-playfair text-xl font-bold text-gray-900">Pastel Drip de Frutos Silvestres</h3>
-                                <span class="text-rose-500 font-bold text-lg">$520</span>
+                                <h3 class="font-playfair text-xl font-bold text-gray-900">Caja de Galletas Gourmet</h3>
+                                <span class="text-pink-600 font-bold text-lg">$320</span>
                             </div>
-                            <p class="text-xs text-gray-500">Bizcocho esponjoso con crema diplomática y goteo de chocolate amargo 70%.</p>
-                            <button onclick="quickOrder('Pastel Drip Frutos Silvestres')" class="w-full py-2.5 bg-rose-50 hover:bg-rose-500 text-rose-600 hover:text-white font-semibold rounded-xl border border-rose-200 transition-colors flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-cart-plus"></i> Seleccionar para Cotizar
-                            </button>
+                            <p class="text-xs text-gray-500">Galletas gigantes estilo New York con toppings de Nutella, Lotus y Oreo.</p>
+                            <div class="flex items-center justify-between pt-2 border-t border-gray-100">
+                                <button type="button" class="btn-ver-detalles text-xs font-semibold text-gray-600 hover:text-pink-600 transition-colors flex items-center gap-1">
+                                    <i class="fa-solid fa-eye"></i> Ver Detalles
+                                </button>
+                                <button type="button" class="btn-cotizar-tarjeta px-4 py-2 bg-pink-600 hover:bg-pink-700 text-white text-xs font-semibold rounded-xl shadow transition-all active:scale-95" data-nombre="Caja de Galletas Gourmet">
+                                    Cotizar
+                                </button>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Producto 6 / Servicio -->
-                    <div class="product-card bg-white rounded-2xl overflow-hidden border border-rose-100 shadow-sm hover:shadow-xl transition-all duration-300 group" data-category="mesas">
-                        <div class="relative overflow-hidden h-64 bg-gradient-to-tr from-rose-400 to-amber-300 flex items-center justify-center text-white p-8 text-center">
-                            <div class="space-y-2">
-                                <i class="fa-solid fa-champagne-glasses text-5xl"></i>
-                                <h4 class="font-playfair text-2xl font-bold">Catering Completo de Mesas Dulces</h4>
-                            </div>
+                    <!-- Producto 6 -->
+                    <div class="tarjeta-producto bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer" data-id="p6" data-categoria="bodas">
+                        <div class="relative overflow-hidden h-64">
+                            <img src="pastelBoda2.jpg" alt="Pastel Nupcial Minimalista" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
                         </div>
                         <div class="p-6 space-y-3">
                             <div class="flex justify-between items-start">
-                                <h3 class="font-playfair text-xl font-bold text-gray-900">Servicio de Mesa Temática</h3>
-                                <span class="text-rose-500 font-bold text-lg">Personalizado</span>
+                                <h3 class="font-playfair text-xl font-bold text-gray-900">Pastel Nupcial Minimalista</h3>
+                                <span class="text-pink-600 font-bold text-lg">$850</span>
                             </div>
-                            <p class="text-xs text-gray-500">Montaje, cristalería, decoración floral y variedad de minipostres para más de 50 invitados.</p>
-                            <button onclick="quickOrder('Servicio Mesa Dulce')" class="w-full py-2.5 bg-rose-50 hover:bg-rose-500 text-rose-600 hover:text-white font-semibold rounded-xl border border-rose-200 transition-colors flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-cart-plus"></i> Seleccionar para Cotizar
-                            </button>
+                            <p class="text-xs text-gray-500">Pastel de 2 niveles con diseño atemporal y arreglo de flores frescas.</p>
+                            <div class="flex items-center justify-between pt-2 border-t border-gray-100">
+                                <button type="button" class="btn-ver-detalles text-xs font-semibold text-gray-600 hover:text-pink-600 transition-colors flex items-center gap-1">
+                                    <i class="fa-solid fa-eye"></i> Ver Detalles
+                                </button>
+                                <button type="button" class="btn-cotizar-tarjeta px-4 py-2 bg-pink-600 hover:bg-pink-700 text-white text-xs font-semibold rounded-xl shadow transition-all active:scale-95" data-nombre="Pastel Nupcial Minimalista">
+                                    Cotizar
+                                </button>
+                            </div>
                         </div>
                     </div>
 
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- SECCIÓN 3: CONTACTO / FORMULARIO INNOVADOR -->
-    <section id="contact" class="py-20 px-6 bg-gradient-to-b from-brand-cream via-amber-50/40 to-rose-50/60 relative">
+    <!-- FORMULARIO DE CONTACTO Y COTIZADOR -->
+    <section id="contacto" class="py-20 px-6 bg-gradient-to-b from-brand-cream via-amber-50/40 to-rose-50/60 relative">
         <div class="max-w-4xl mx-auto bg-white rounded-3xl shadow-2xl border border-rose-100 overflow-hidden">
-            <div class="bg-gradient-to-r from-rose-500 to-amber-500 p-8 sm:p-12 text-white text-center relative overflow-hidden">
-                <div class="relative z-10 space-y-2">
-                    <span class="text-xs uppercase tracking-widest text-amber-200 font-bold">Cotizador Interactivo</span>
-                    <h2 class="font-playfair text-3xl sm:text-4xl font-extrabold">Diseña & Encarga tu Pastel Ideal</h2>
-                    <p class="text-rose-100 text-sm max-w-md mx-auto">Completa el formulario para recibir una cotización instantánea y confirmación de disponibilidad.</p>
-                </div>
+            <div class="bg-gradient-to-r from-pink-600 to-rose-500 p-8 sm:p-12 text-white text-center">
+                <span class="text-xs uppercase tracking-widest text-pink-200 font-bold">Cotizador Interactivo</span>
+                <h2 class="font-playfair text-3xl sm:text-4xl font-extrabold mt-1">Diseña & Encarga tu Pastel Ideal</h2>
+                <p class="text-rose-100 text-sm max-w-md mx-auto mt-2">Llena el formulario para obtener tu presupuesto estimado y confirmar disponibilidad.</p>
             </div>
 
-            <form id="orderForm" class="p-6 sm:p-10 space-y-8" novalidate>
-                
-                <!-- PASO 1: DATOS DEL CLIENTE -->
+            <form id="formularioPedido" class="p-6 sm:p-10 space-y-8" novalidate>
+                <!-- PASO 1: CONTACTO -->
                 <div class="space-y-4">
                     <h3 class="font-playfair text-xl font-bold text-gray-800 flex items-center gap-2 border-b border-gray-100 pb-2">
-                        <span class="w-7 h-7 rounded-full bg-rose-100 text-rose-600 text-xs flex items-center justify-center font-bold">1</span>
+                        <span class="w-7 h-7 rounded-full bg-pink-100 text-pink-600 text-xs flex items-center justify-center font-bold">1</span>
                         Información de Contacto
                     </h3>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-xs font-semibold text-gray-700 mb-1">Nombre Completo *</label>
-                            <input type="text" id="clientName" placeholder="Ej. Ana García" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-rose-400 focus:border-transparent outline-none transition-all text-sm">
-                            <span class="error-msg text-xs text-rose-500 hidden mt-1">Ingresa tu nombre completo.</span>
+                            <input type="text" id="nombreCliente" placeholder="Ej. Ana García" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-pink-400 focus:border-transparent outline-none transition-all text-sm">
+                            <span class="mensaje-error text-xs text-pink-600 hidden mt-1">Ingresa tu nombre completo.</span>
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-gray-700 mb-1">Teléfono / WhatsApp *</label>
-                            <input type="tel" id="clientPhone" placeholder="Ej. 55 1234 5678" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-rose-400 focus:border-transparent outline-none transition-all text-sm">
-                            <span class="error-msg text-xs text-rose-500 hidden mt-1">Ingresa un teléfono válido (10 dígitos).</span>
+                            <input type="tel" id="telefonoCliente" placeholder="Ej. 55 1234 5678" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-pink-400 focus:border-transparent outline-none transition-all text-sm">
+                            <span class="mensaje-error text-xs text-pink-600 hidden mt-1">Ingresa un teléfono válido de 10 dígitos.</span>
                         </div>
                     </div>
 
                     <div>
                         <label class="block text-xs font-semibold text-gray-700 mb-1">Correo Electrónico *</label>
-                        <input type="email" id="clientEmail" placeholder="tu@email.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-rose-400 focus:border-transparent outline-none transition-all text-sm">
-                        <span class="error-msg text-xs text-rose-500 hidden mt-1">Ingresa un correo electrónico válido.</span>
+                        <input type="email" id="correoCliente" placeholder="tu@correo.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-pink-400 focus:border-transparent outline-none transition-all text-sm">
+                        <span class="mensaje-error text-xs text-pink-600 hidden mt-1">Ingresa un correo electrónico válido.</span>
                     </div>
                 </div>
 
-                <!-- PASO 2: ESPECIFICACIONES DEL PASTEL -->
+                <!-- PASO 2: PRODUCTO -->
                 <div class="space-y-4">
                     <h3 class="font-playfair text-xl font-bold text-gray-800 flex items-center gap-2 border-b border-gray-100 pb-2">
-                        <span class="w-7 h-7 rounded-full bg-rose-100 text-rose-600 text-xs flex items-center justify-center font-bold">2</span>
+                        <span class="w-7 h-7 rounded-full bg-pink-100 text-pink-600 text-xs flex items-center justify-center font-bold">2</span>
                         Detalles del Pastel o Producto
                     </h3>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-xs font-semibold text-gray-700 mb-1">Tipo de Pastel / Especialidad *</label>
-                            <select id="cakeType" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-rose-400 focus:border-transparent outline-none transition-all text-sm bg-white">
-                                <option value="">-- Selecciona una Opción --</option>
-                                <option value="Pastel de Boda (Elegance)">Pastel de Boda (Elegance)</option>
-                                <option value="Red Velvet con Frutos Rojos">Red Velvet con Frutos Rojos</option>
-                                <option value="Tarta Vegana de Cacao">Tarta Vegana de Cacao & Avellana</option>
-                                <option value="Box de Cupcakes Gourmet">Box de Cupcakes Gourmet (x6)</option>
-                                <option value="Torre de Macarons">Torre de Macarons</option>
-                                <option value="Pastel Personalizado Especial">Pastel 100% Personalizado</option>
+                            <select id="tipoPastel" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-pink-400 focus:border-transparent outline-none transition-all text-sm bg-white">
+                                <option value="">-- Elige una opción --</option>
+                                <option value="Pastel Nupcial Elegancia">Pastel Nupcial Elegancia</option>
+                                <option value="Cumpleaños Choco-Art">Cumpleaños Choco-Art</option>
+                                <option value="Pastel Red Velvet & Fresas">Pastel Red Velvet & Fresas</option>
+                                <option value="Macarrones Surtidos París">Macarrones Surtidos París</option>
+                                <option value="Caja de Galletas Gourmet">Caja de Galletas Gourmet</option>
+                                <option value="Pastel Nupcial Minimalista">Pastel Nupcial Minimalista</option>
                             </select>
-                            <span class="error-msg text-xs text-rose-500 hidden mt-1">Selecciona un tipo de pastel.</span>
+                            <span class="mensaje-error text-xs text-pink-600 hidden mt-1">Selecciona un tipo de pastel.</span>
                         </div>
 
                         <div>
-                            <label class="block text-xs font-semibold text-gray-700 mb-1">Tamaño / Porciones Estimadas *</label>
-                            <select id="cakeSize" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-rose-400 focus:border-transparent outline-none transition-all text-sm bg-white">
-                                <option value="10">Pequeño (10-12 personas)</option>
-                                <option value="20" selected>Mediano (20-25 personas)</option>
-                                <option value="40">Grande (35-40 personas)</option>
-                                <option value="80">Evento / Boda (+70 personas)</option>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1">Tamaño / Porciones Deseadas *</label>
+                            <select id="tamanoPastel" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-pink-400 focus:border-transparent outline-none transition-all text-sm bg-white">
+                                <option value="10">Chico (10 a 12 personas)</option>
+                                <option value="20" selected>Mediano (20 a 25 personas)</option>
+                                <option value="40">Grande (35 a 40 personas)</option>
+                                <option value="80">Evento Grande (+70 personas)</option>
                             </select>
                         </div>
                     </div>
 
                     <div>
-                        <label class="block text-xs font-semibold text-gray-700 mb-1">Notas Especiales / Mensaje en el Pastel / Alergias</label>
-                        <textarea id="cakeNotes" rows="3" placeholder="Ej. Escribir '¡Feliz Cumpleaños María!', evitar nueces..." class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-rose-400 focus:border-transparent outline-none transition-all text-sm"></textarea>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">Notas Especiales / Dedicatoria / Alergias</label>
+                        <textarea id="notasPastel" rows="3" placeholder="Ej. Poner leyenda '¡Feliz Cumpleaños María!', evitar nueces..." class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-pink-400 focus:border-transparent outline-none transition-all text-sm"></textarea>
                     </div>
                 </div>
 
-                <!-- PASO 3: ENTREGA Y FECHA -->
+                <!-- PASO 3: ENTREGA -->
                 <div class="space-y-4">
                     <h3 class="font-playfair text-xl font-bold text-gray-800 flex items-center gap-2 border-b border-gray-100 pb-2">
-                        <span class="w-7 h-7 rounded-full bg-rose-100 text-rose-600 text-xs flex items-center justify-center font-bold">3</span>
-                        Método de Entrega & Fecha
+                        <span class="w-7 h-7 rounded-full bg-pink-100 text-pink-600 text-xs flex items-center justify-center font-bold">3</span>
+                        Forma de Entrega & Fecha
                     </h3>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-xs font-semibold text-gray-700 mb-1">Fecha del Evento / Entrega *</label>
-                            <input type="date" id="eventDate" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-rose-400 focus:border-transparent outline-none transition-all text-sm">
-                            <span class="error-msg text-xs text-rose-500 hidden mt-1">Selecciona una fecha válida.</span>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1">Fecha de Entrega o Evento *</label>
+                            <input type="date" id="fechaEvento" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-pink-400 focus:border-transparent outline-none transition-all text-sm">
+                            <span class="mensaje-error text-xs text-pink-600 hidden mt-1">Elige una fecha válida.</span>
                         </div>
 
                         <div>
                             <label class="block text-xs font-semibold text-gray-700 mb-1">Tipo de Entrega *</label>
-                            <div class="flex gap-4 pt-1">
+                            <div class="flex gap-4 pt-2">
                                 <label class="flex items-center gap-2 cursor-pointer">
-                                    <input type="radio" name="deliveryType" value="pickup" checked class="text-rose-500 focus:ring-rose-400">
-                                    <span class="text-sm font-medium text-gray-700">Recoger en Tienda</span>
+                                    <input type="radio" name="tipoEntrega" value="tienda" checked class="text-pink-600 focus:ring-pink-400">
+                                    <span class="text-sm font-medium text-gray-700">Recoger en Sucursal</span>
                                 </label>
                                 <label class="flex items-center gap-2 cursor-pointer">
-                                    <input type="radio" name="deliveryType" value="delivery" class="text-rose-500 focus:ring-rose-400">
+                                    <input type="radio" name="tipoEntrega" value="domicilio" class="text-pink-600 focus:ring-pink-400">
                                     <span class="text-sm font-medium text-gray-700">Envío a Domicilio</span>
                                 </label>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Dirección (Se activa dinámicamente) -->
-                    <div id="addressContainer" class="hidden transition-all duration-300">
-                        <label class="block text-xs font-semibold text-gray-700 mb-1">Dirección Completa de Entrega *</label>
-                        <input type="text" id="deliveryAddress" placeholder="Calle, Número, Colonia, Código Postal, Referencias" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-rose-400 focus:border-transparent outline-none transition-all text-sm">
-                        <span class="error-msg text-xs text-rose-500 hidden mt-1">Ingresa la dirección para el envío.</span>
+                    <!-- Campos de Dirección del Cliente -->
+                    <div id="contenedorDireccion" class="hidden space-y-4 pt-2 bg-pink-50/50 p-4 rounded-2xl border border-rose-100/80 transition-all duration-300">
+                        <div class="flex items-center gap-2 text-xs font-bold text-pink-600 uppercase tracking-wider">
+                            <i class="fa-solid fa-truck-fast"></i> Datos de Entrega a Domicilio
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="sm:col-span-2">
+                                <label class="block text-xs font-semibold text-gray-700 mb-1">Calle y Número Exterior / Interior *</label>
+                                <input type="text" id="calleNumero" placeholder="Ej. Av. Insurgentes Sur #453, Depto 4B" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-pink-400 focus:border-transparent outline-none transition-all text-sm bg-white">
+                                <span class="mensaje-error text-xs text-pink-600 hidden mt-1">Ingresa tu calle y número.</span>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-700 mb-1">Colonia / Alcaldía o Municipio *</label>
+                                <input type="text" id="coloniaMunicipio" placeholder="Ej. Condesa, Cuauhtémoc" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-pink-400 focus:border-transparent outline-none transition-all text-sm bg-white">
+                                <span class="mensaje-error text-xs text-pink-600 hidden mt-1">Ingresa la colonia o municipio.</span>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-700 mb-1">Código Postal *</label>
+                                <input type="text" id="codigoPostal" placeholder="Ej. 06100" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-pink-400 focus:border-transparent outline-none transition-all text-sm bg-white">
+                                <span class="mensaje-error text-xs text-pink-600 hidden mt-1">Ingresa un código postal válido.</span>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <label class="block text-xs font-semibold text-gray-700 mb-1">Referencias de Ubicación (Opcional)</label>
+                                <input type="text" id="referenciasUbicacion" placeholder="Ej. Portón blanco, entre calle Puebla y Oaxaca" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-pink-400 focus:border-transparent outline-none transition-all text-sm bg-white">
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- ESTIMACIÓN DE PRECIO Y BOTÓN DE ENVÍO -->
+                <!-- PRECIO Y BOTÓN DE ENVÍO -->
                 <div class="bg-amber-50/60 p-4 rounded-2xl border border-amber-200/60 flex flex-col sm:flex-row items-center justify-between gap-4">
                     <div>
                         <p class="text-xs text-amber-800 font-medium">Estimado aproximado:</p>
-                        <p id="totalPriceEstimate" class="font-playfair text-2xl font-bold text-rose-600">$450.00 MXN</p>
+                        <p id="precioEstimadoTotal" class="font-playfair text-2xl font-bold text-pink-600">$450.00 MXN</p>
                     </div>
-                    <button type="submit" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-rose-500 to-amber-500 text-white font-bold rounded-xl shadow-lg hover:shadow-rose-200 hover:scale-105 active:scale-95 transition-all text-center flex items-center justify-center gap-2">
+                    <button type="submit" id="btnEnviarWhatsapp" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-pink-600 to-rose-500 text-white font-bold rounded-xl shadow-lg hover:shadow-pink-200 hover:scale-105 active:scale-95 transition-all text-center flex items-center justify-center gap-2">
                         <i class="fa-solid fa-paper-plane"></i> Enviar Pedido por WhatsApp
                     </button>
                 </div>
@@ -459,32 +487,30 @@
         </div>
     </section>
 
-    <!-- SECCIÓN 4: MAPA Y UBICACIÓN DE CÓMO LLEGAR -->
-    <section id="location" class="py-20 px-6 bg-white relative border-t border-rose-100">
+    <!-- UBICACIÓN Y MAPA -->
+    <section id="ubicacion" class="py-20 px-6 bg-white border-t border-rose-100">
         <div class="max-w-7xl mx-auto space-y-12">
             <div class="text-center max-w-3xl mx-auto space-y-4">
-                <span class="text-rose-500 font-semibold text-sm tracking-widest uppercase">Visítanos & Cobertura</span>
+                <span class="text-pink-600 font-semibold text-sm tracking-widest uppercase">Visítanos & Cobertura</span>
                 <h2 class="font-playfair text-3xl sm:text-5xl font-bold text-gray-900">¿Cómo Llegar a Nuestra Pastelería?</h2>
-                <p class="text-gray-600">Ven a degustar nuestros postres recién horneados o solicita tu entrega a domicilio dentro de nuestra zona de cobertura.</p>
+                <p class="text-gray-600">Ven a disfrutar nuestros postres recién salidos del horno o solicita tu entrega a domicilio.</p>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-                
-                <!-- Tarjeta de Información de Ubicación -->
                 <div class="bg-gradient-to-br from-brand-cream to-rose-50 p-8 rounded-3xl border border-rose-100 shadow-lg space-y-6">
                     <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-2xl bg-rose-500 text-white flex items-center justify-center text-xl shadow-md">
+                        <div class="w-12 h-12 rounded-2xl bg-pink-600 text-white flex items-center justify-center text-xl shadow-md">
                             <i class="fa-solid fa-store"></i>
                         </div>
                         <div>
-                            <h3 class="font-playfair text-xl font-bold text-gray-900">Boutique Principal</h3>
-                            <p class="text-xs text-rose-500 font-medium">Dulce Arte Pâtisserie</p>
+                            <h3 class="font-playfair text-xl font-bold text-gray-900">Sucursal Principal</h3>
+                            <p class="text-xs text-pink-600 font-medium">Dulce Arte Pâtisserie</p>
                         </div>
                     </div>
 
                     <div class="space-y-4 text-sm text-gray-600">
                         <div class="flex items-start gap-3">
-                            <i class="fa-solid fa-location-dot text-rose-500 mt-1"></i>
+                            <i class="fa-solid fa-location-dot text-pink-600 mt-1"></i>
                             <div>
                                 <strong class="text-gray-800 block">Dirección:</strong>
                                 Av. Paseo de la Reforma 222, Juárez, Cuauhtémoc, 06600 Ciudad de México, CDMX.
@@ -492,7 +518,7 @@
                         </div>
 
                         <div class="flex items-start gap-3">
-                            <i class="fa-solid fa-clock text-rose-500 mt-1"></i>
+                            <i class="fa-solid fa-clock text-pink-600 mt-1"></i>
                             <div>
                                 <strong class="text-gray-800 block">Horarios de Atención:</strong>
                                 <p>Lunes a Sábado: 8:00 AM – 8:00 PM</p>
@@ -501,30 +527,25 @@
                         </div>
 
                         <div class="flex items-start gap-3">
-                            <i class="fa-solid fa-truck-ramp-box text-rose-500 mt-1"></i>
+                            <i class="fa-solid fa-truck-ramp-box text-pink-600 mt-1"></i>
                             <div>
                                 <strong class="text-gray-800 block">Zona de Envío Directo:</strong>
-                                Cobertura hasta 10 km a la redonda con transporte refrigerado.
+                                Cobertura a toda la ciudad con transporte refrigerado.
                             </div>
                         </div>
                     </div>
 
-                    <!-- Botones de Navegación Rápida -->
                     <div class="pt-4 border-t border-rose-200/60 space-y-3">
-                        <a href="https://maps.google.com" target="_blank" rel="noopener" class="w-full py-3 bg-rose-500 hover:bg-rose-600 text-white font-semibold rounded-xl transition-all shadow-md flex items-center justify-center gap-2 text-sm">
+                        <a href="https://maps.google.com/?q=19.4270,-99.1677" target="_blank" rel="noopener" class="w-full py-3 bg-pink-600 hover:bg-pink-700 text-white font-semibold rounded-xl transition-all shadow-md flex items-center justify-center gap-2 text-sm">
                             <i class="fa-solid fa-diamond-turn-right"></i> Abrir en Google Maps
                         </a>
-                        <a href="https://waze.com" target="_blank" rel="noopener" class="w-full py-3 bg-sky-500 hover:bg-sky-600 text-white font-semibold rounded-xl transition-all shadow-md flex items-center justify-center gap-2 text-sm">
+                        <a href="https://waze.com/ul?ll=19.4270,-99.1677&navigate=yes" target="_blank" rel="noopener" class="w-full py-3 bg-sky-500 hover:bg-sky-600 text-white font-semibold rounded-xl transition-all shadow-md flex items-center justify-center gap-2 text-sm">
                             <i class="fa-solid fa-route"></i> Abrir con Waze
                         </a>
                     </div>
                 </div>
 
-                <!-- Mapa Interactivo Leaflet -->
-                <div class="lg:col-span-2 bg-gray-100 rounded-3xl overflow-hidden shadow-xl border border-rose-100 h-[450px] relative z-10" id="map">
-                    <!-- El mapa se renderiza aquí mediante JavaScript -->
-                </div>
-
+                <div class="lg:col-span-2 bg-gray-100 rounded-3xl overflow-hidden shadow-xl border border-rose-100 h-[450px] relative z-10" id="mapa"></div>
             </div>
         </div>
     </section>
@@ -534,7 +555,7 @@
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
             <div class="space-y-4">
                 <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-full bg-rose-500 flex items-center justify-center text-white">
+                    <div class="w-8 h-8 rounded-full bg-pink-600 flex items-center justify-center text-white">
                         <i class="fa-solid fa-cake-candles text-sm"></i>
                     </div>
                     <span class="font-playfair text-xl font-bold">Dulce Arte</span>
@@ -547,29 +568,29 @@
             <div>
                 <h4 class="font-playfair text-lg font-bold mb-4 text-amber-300">Navegación</h4>
                 <ul class="space-y-2 text-xs text-gray-400">
-                    <li><a href="#home" class="hover:text-rose-400 transition-colors">Inicio</a></li>
-                    <li><a href="#about" class="hover:text-rose-400 transition-colors">Nosotros</a></li>
-                    <li><a href="#products" class="hover:text-rose-400 transition-colors">Catálogo</a></li>
-                    <li><a href="#contact" class="hover:text-rose-400 transition-colors">Cotizador</a></li>
-                    <li><a href="#location" class="hover:text-rose-400 transition-colors">Ubicación</a></li>
+                    <li><a href="#inicio" class="hover:text-pink-400 transition-colors">Inicio</a></li>
+                    <li><a href="#nosotros" class="hover:text-pink-400 transition-colors">Nosotros</a></li>
+                    <li><a href="#productos" class="hover:text-pink-400 transition-colors">Catálogo</a></li>
+                    <li><a href="#contacto" class="hover:text-pink-400 transition-colors">Cotizador</a></li>
+                    <li><a href="#ubicacion" class="hover:text-pink-400 transition-colors">Ubicación</a></li>
                 </ul>
             </div>
 
             <div>
                 <h4 class="font-playfair text-lg font-bold mb-4 text-amber-300">Contacto</h4>
                 <ul class="space-y-2 text-xs text-gray-400">
-                    <li><i class="fa-solid fa-phone text-rose-400 mr-2"></i> +52 55 1234 5678</li>
-                    <li><i class="fa-solid fa-envelope text-rose-400 mr-2"></i> hola@dulcearte.com</li>
-                    <li><i class="fa-solid fa-location-dot text-rose-400 mr-2"></i> CDMX, México</li>
+                    <li><i class="fa-solid fa-phone text-pink-400 mr-2"></i> +52 55 1234 5678</li>
+                    <li><i class="fa-solid fa-envelope text-pink-400 mr-2"></i> hola@dulcearte.com</li>
+                    <li><i class="fa-solid fa-location-dot text-pink-400 mr-2"></i> CDMX, México</li>
                 </ul>
             </div>
 
             <div>
                 <h4 class="font-playfair text-lg font-bold mb-4 text-amber-300">Síguenos</h4>
                 <div class="flex gap-4 text-lg">
-                    <a href="#" class="w-9 h-9 rounded-full bg-gray-800 hover:bg-rose-500 flex items-center justify-center transition-colors"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" class="w-9 h-9 rounded-full bg-gray-800 hover:bg-rose-500 flex items-center justify-center transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#" class="w-9 h-9 rounded-full bg-gray-800 hover:bg-rose-500 flex items-center justify-center transition-colors"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#" class="w-9 h-9 rounded-full bg-gray-800 hover:bg-pink-600 flex items-center justify-center transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="w-9 h-9 rounded-full bg-gray-800 hover:bg-pink-600 flex items-center justify-center transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="w-9 h-9 rounded-full bg-gray-800 hover:bg-pink-600 flex items-center justify-center transition-colors"><i class="fa-brands fa-tiktok"></i></a>
                 </div>
             </div>
         </div>
@@ -579,22 +600,86 @@
         </div>
     </footer>
 
-    <!-- MODAL DE ÉXITO AL ENVIAR FORMULARIO -->
-    <div id="successModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl p-8 max-w-md w-full text-center space-y-4 shadow-2xl border border-rose-100 transform transition-all scale-95 opacity-0" id="modalCard">
+    <!-- MODAL DETALLE DE PRODUCTO -->
+    <div id="ventanaProducto" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl relative transform transition-all scale-95 opacity-0" id="tarjetaModalProducto">
+            
+            <!-- Botón Cerrar (X) -->
+            <button id="btnCerrarModalProducto" type="button" class="absolute top-4 right-4 z-30 w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 flex items-center justify-center transition-all focus:outline-none">
+                <i class="fa-solid fa-xmark text-base"></i>
+            </button>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 items-stretch">
+                <!-- Foto del Postre (Lado Izquierdo) -->
+                <div class="h-64 md:h-full relative overflow-hidden bg-gray-100">
+                    <img id="imagenModalProducto" src="pastelChocolate.jpg" alt="Producto" class="w-full h-full object-cover">
+                </div>
+
+                <!-- Contenido de Información (Lado Derecho) -->
+                <div class="p-6 sm:p-8 flex flex-col justify-between space-y-4">
+                    <div class="space-y-3">
+                        <!-- Pastilla Categoría -->
+                        <div>
+                            <span id="categoriaModalProducto" class="inline-block bg-pink-100 text-pink-600 font-bold text-[10px] uppercase tracking-wider px-3 py-1 rounded-full">
+                                CUMPLEAÑOS
+                            </span>
+                        </div>
+
+                        <!-- Título y Precio -->
+                        <h3 id="tituloModalProducto" class="font-playfair text-2xl font-bold text-gray-900 leading-tight">
+                            Cumpleaños Choco-Art
+                        </h3>
+                        <p id="precioModalProducto" class="font-playfair text-xl font-bold text-pink-600">
+                            $1,250 MXN
+                        </p>
+
+                        <!-- Descripción -->
+                        <p id="descripcionModalProducto" class="text-xs text-gray-600 leading-relaxed font-normal">
+                            Bizcocho húmedo de tres chocolates belgas decorado con trufas finas, macaron de frambuesa y baño de ganache brillante.
+                        </p>
+
+                        <!-- Lista de Especificaciones con Íconos Rosas -->
+                        <div class="space-y-1.5 pt-3 border-t border-gray-100 text-xs text-gray-600">
+                            <p class="flex items-start gap-1.5">
+                                <i class="fa-solid fa-seedling text-pink-500 mt-0.5 text-xs"></i>
+                                <span><strong class="text-gray-800 font-semibold">Ingredientes:</strong> <span id="ingredientesModalProducto">Chocolate 70% cacao, avellanas tostadas, crema de leche fresca.</span></span>
+                            </p>
+                            <p class="flex items-center gap-1.5">
+                                <i class="fa-solid fa-users text-pink-500 text-xs"></i>
+                                <span><strong class="text-gray-800 font-semibold">Porciones:</strong> <span id="porcionesModalProducto">15 a 20 personas</span></span>
+                            </p>
+                            <p class="flex items-center gap-1.5">
+                                <i class="fa-solid fa-clock text-pink-500 text-xs"></i>
+                                <span><strong class="text-gray-800 font-semibold">Tiempo anticipación:</strong> <span id="tiempoModalProducto">24 horas</span></span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Botón Magenta Principal -->
+                    <button id="botonCotizarModal" type="button" class="w-full py-3.5 bg-pink-600 hover:bg-pink-700 active:scale-95 text-white font-semibold rounded-xl shadow-md transition-all text-sm text-center mt-4">
+                        Cotizar este Producto
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL CONFIRMACIÓN -->
+    <div id="ventanaExito" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-8 max-w-md w-full text-center space-y-4 shadow-2xl border border-rose-100 transform transition-all scale-95 opacity-0" id="tarjetaModalExito">
             <div class="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-500 text-4xl mx-auto animate-bounce">
                 <i class="fa-solid fa-check"></i>
             </div>
             <h3 class="font-playfair text-2xl font-bold text-gray-900">¡Pedido Enviado!</h3>
-            <p class="text-sm text-gray-600">Hemos generado la solicitud para tu pastel. Te redirigiremos a WhatsApp para confirmar los detalles finales.</p>
-            <button onclick="closeModal()" class="w-full py-3 bg-rose-500 hover:bg-rose-600 text-white font-semibold rounded-xl transition-all">Entendido</button>
+            <p class="text-sm text-gray-600">Hemos generado la solicitud para tu pedido. Te redirigiremos a WhatsApp para confirmar los detalles finales.</p>
+            <button id="btnCerrarModalExito" type="button" class="w-full py-3 bg-pink-600 hover:bg-pink-700 text-white font-semibold rounded-xl transition-all">Entendido</button>
         </div>
     </div>
 
-    <!-- Leaflet JS (para el mapa) -->
+    <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     
-    <!-- JavaScript Principal -->
-    <script src="function.js"></script>
+    <!-- Vinculamos con tu archivo formulario.js -->
+    <script src="formulario.js"></script>
 </body>
 </html>

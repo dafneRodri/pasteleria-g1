@@ -1,4 +1,4 @@
-/* Custom Scrollbar */
+/* Barra de Desplazamiento Personalizada */
 ::-webkit-scrollbar {
     width: 10px;
 }
@@ -6,29 +6,31 @@
     background: #FFF6F6;
 }
 ::-webkit-scrollbar-thumb {
-    background: #F67280;
+    background: #E13B8A;
     border-radius: 5px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: #e05263;
+    background: #C2185B;
 }
 
-/* Modal Transitions */
-#successModal.active {
+/* Transiciones de Ventanas Emergentes */
+#ventanaExito.activo, #ventanaProducto.activo {
     display: flex !important;
 }
-#successModal.active #modalCard {
+
+#ventanaExito.activo #tarjetaModalExito, 
+#ventanaProducto.activo #tarjetaModalProducto {
     transform: scale(1) !important;
     opacity: 1 !important;
 }
 
-/* Input Error Highlighting */
-.input-error {
+/* Resaltado de Campos con Error */
+.campo-error {
     border-color: #ef4444 !important;
     background-color: #fef2f2 !important;
 }
 
-/* Custom Leaflet Map Popup Styling */
+/* Estilo del Marcador y Cuadro del Mapa Leaflet */
 .leaflet-popup-content-wrapper {
     border-radius: 1rem !important;
     padding: 4px !important;
